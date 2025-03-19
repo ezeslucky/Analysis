@@ -1,4 +1,4 @@
-# Analysis
+# Analyzr
 
 
 
@@ -7,8 +7,8 @@
 To get started, clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/ezeslucky/Analysis.git
-cd Analysis
+git clone https://github.com/ezeslucky/Analyzr.git
+cd Analyzr
 yarn install
 ```
 
@@ -28,8 +28,8 @@ Click the "Fork" button at the top-right of the repository page to create your o
 
 ### 2. Clone Your Fork
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/Analysis.git
-cd Analysis
+git clone https://github.com/YOUR_GITHUB_USERNAME/Analyzr.git
+cd Analyzr
 ```
 
 ### 3. Create a New Branch
@@ -49,12 +49,12 @@ git push origin feature-name
 ### 6. Submit a Pull Request
 Go to the original repository and create a Pull Request (PR), explaining your changes.
 
-For more details, check [Issues](https://github.com/ezeslucky/Analysis/issues) and [Pull Requests](https://github.com/ezeslucky/Analysis/pulls).
+For more details, check [Issues](https://github.com/ezeslucky/Analyzr/issues) and [Pull Requests](https://github.com/ezeslucky/Analyzr/pulls).
 
 
 
 ## ⭐ Show Your Support  
 If you like this project, give it a **star** ⭐ on GitHub!  
 
-[![Star on GitHub](https://img.shields.io/github/stars/ezeslucky/Analysis?style=social)](https://github.com/ezeslucky/Analysis/stargazers) 
+[![Star on GitHub](https://img.shields.io/github/stars/ezeslucky/Analyzr?style=social)](https://github.com/ezeslucky/Analyzr/stargazers) 
 
