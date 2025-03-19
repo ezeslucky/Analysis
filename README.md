@@ -1,5 +1,6 @@
 # Analyzr
 
+  Analyzr is a fast, lightweight, and privacy-focused alternative to Google Analytics, designed for effortless insights without compromising user data.
 
 
 ## 🛠 Installation
