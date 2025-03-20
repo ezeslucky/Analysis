@@ -2,9 +2,9 @@
   "name": "analyzr",
   "version": "2.17.0",
   "description": "A simple, fast, privacy-focused alternative to Google Analytics.",
-  "author": "Umami Software, Inc. <hello@umami.is>",
+  "author": "ezeslukck ",
   "license": "MIT",
-  "homepage": "https://umami.is",
+  "homepage": "",
   "repository": {
     "type": "git",
     "url": "https://github.com/ezeslucky/Analyzr.git"

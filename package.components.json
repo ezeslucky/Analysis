@@ -1,7 +1,7 @@
 {
   "name": "@analyzr/components",
   "version": "0.1.0",
-  "description": "Umami React components.",
+  "description": "Analyzr React components.",
   "author": "Mike Cao <ezeslucky>",
   "license": "MIT",
   "type": "module",

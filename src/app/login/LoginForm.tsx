@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Form,
   FormRow,
@@ -39,7 +40,7 @@ export function LoginForm() {
       <Icon className={styles.icon} size="xl">
         <Logo />
       </Icon>
-      <div className={styles.title}>umami</div>
+      <div className={styles.title}>Analyzr</div>
       <Form className={styles.form} onSubmit={handleSubmit} error={getMessage(error)}>
         <FormRow label={formatMessage(labels.username)}>
           <FormInput

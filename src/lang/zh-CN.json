@@ -250,7 +250,7 @@
   "message.incorrect-username-password": "用户名或密码不正确。",
   "message.invalid-domain": "无效域名",
   "message.min-password-length": "密码最短长度为 {n} 个字符",
-  "message.new-version-available": "Umami 的新版本 {version} 已推出！",
+  "message.new-version-available": "Analyzr 的新版本 {version} 已推出！",
   "message.no-data-available": "无可用数据。",
   "message.no-event-data": "无可用事件。",
   "message.no-match-password": "密码不一致",
