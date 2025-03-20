@@ -36,8 +36,8 @@ export function LoginForm() {
   };
 
   return (
-    <div className={styles.login}>
-      <Icon className={styles.icon} size="xl">
+    <div className="w-96 mx-auto transform -translate-y-1/4"> 
+      <Icon className=" w-full" size="xl">
         <Logo />
       </Icon>
       <div className={styles.title}>Analyzr</div>
