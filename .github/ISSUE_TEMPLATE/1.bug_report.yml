@@ -14,7 +14,7 @@ body:
       options:
         - PostgreSQL
         - MySQL
-        - Umami Cloud
+        - Analyzr Cloud
     validations:
       required: true
   - type: textarea
@@ -24,7 +24,7 @@ body:
       render: shell
   - type: input
     attributes:
-      label: Which Umami version are you using? (if relevant)
+      label: Which Analyzr version are you using? (if relevant)
       description: 'For example: Chrome, Edge, Firefox, etc'
   - type: input
     attributes:
