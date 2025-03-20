@@ -1,6 +1,6 @@
 services:
   analyzr:
-    image: analyzr
+    image: ezeslucky441/analyzr:v1.0
     ports:
       - "3000:3000"
     environment:
