@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { Metadata } from 'next';
 import ReportsHeader from './ReportsHeader';

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { ReactNode } from 'react';
 import { Icon } from 'react-basics';
 import Icons from '@/components/icons';

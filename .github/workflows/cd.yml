@@ -8,9 +8,7 @@ jobs:
     if: ${{ startsWith(github.ref, 'refs/tags/v') }}
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        db-type: [postgresql, mysql]
+    
 
     steps:
       - uses: actions/checkout@v3
@@ -42,7 +40,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v6
         name: Build & push Docker image to docker.io for ${{ matrix.db-type }}
         with:
-          image: umamisoftware/umami
+          image: aurobindo7439/analyzr
           tags: ${{ env.tag_major }}, ${{ env.tag_minor }}, ${{ env.tag_patch }}, ${{ env.tag_latest }}
           buildArgs: DATABASE_TYPE=${{ matrix.db-type }}
           registry: docker.io

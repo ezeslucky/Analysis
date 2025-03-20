@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Metadata } from 'next';
 import UTMReportPage from './UTMReportPage';
 

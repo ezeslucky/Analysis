@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Prisma, Report } from '@prisma/client';
 import prisma from '@/lib/prisma';
 import { PageResult, PageParams } from '@/lib/types';

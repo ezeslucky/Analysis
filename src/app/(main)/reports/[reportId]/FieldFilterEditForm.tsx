@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useMemo, useState } from 'react';
 import { useFilters, useFormat, useMessages, useWebsiteValues } from '@/components/hooks';
 import { OPERATORS } from '@/lib/constants';

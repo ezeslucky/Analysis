@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useContext } from 'react';
 import { ReportContext } from './Report';
 import styles from './ReportBody.module.css';

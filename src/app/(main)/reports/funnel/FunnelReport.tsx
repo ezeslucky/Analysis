@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import FunnelChart from './FunnelChart';
 import FunnelParameters from './FunnelParameters';
 import Report from '../[reportId]/Report';

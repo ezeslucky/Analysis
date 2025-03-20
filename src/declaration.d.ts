@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 declare module 'bcryptjs';
 declare module 'chartjs-adapter-date-fns';
 declare module 'cors';

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useContext, useState } from 'react';
 import { ReportContext } from './Report';
 import styles from './ReportMenu.module.css';

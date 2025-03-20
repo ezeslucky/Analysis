@@ -1,5 +1,5 @@
 name: '🐛 Bug Report'
-description: Create a bug report for Umami.
+description: Create a bug report for Analyzr.
 body:
   - type: textarea
     attributes:

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Form, FormRow, Menu, Item } from 'react-basics';
 import { useMessages } from '@/components/hooks';
 

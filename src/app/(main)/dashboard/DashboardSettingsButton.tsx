@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { TooltipPopup, Icon, Text, Flexbox, Button } from 'react-basics';
 import Icons from '@/components/icons';
 import { saveDashboard } from '@/store/dashboard';

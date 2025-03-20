@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useState, useMemo, useEffect } from 'react';
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import classNames from 'classnames';

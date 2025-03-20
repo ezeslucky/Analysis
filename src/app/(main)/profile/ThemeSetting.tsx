@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import classNames from 'classnames';
 import { Button, Icon } from 'react-basics';
 import { useTheme } from '@/components/hooks';

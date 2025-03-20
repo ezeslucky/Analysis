@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import GoalsChart from './GoalsChart';
 import GoalsParameters from './GoalsParameters';
 import Report from '../[reportId]/Report';

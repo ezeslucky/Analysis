@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useContext } from 'react';
 import { firstBy } from 'thenby';
 import { ReportContext } from '../[reportId]/Report';

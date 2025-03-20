@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createContext, ReactNode } from 'react';
 import { Loading } from 'react-basics';
 import classNames from 'classnames';

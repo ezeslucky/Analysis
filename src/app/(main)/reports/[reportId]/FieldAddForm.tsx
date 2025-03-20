@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { REPORT_PARAMETERS } from '@/lib/constants';

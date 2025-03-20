@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import ProfileHeader from './ProfileHeader';
 import ProfileSettings from './ProfileSettings';

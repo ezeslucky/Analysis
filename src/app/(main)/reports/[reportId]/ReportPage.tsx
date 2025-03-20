@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import { useReport } from '@/components/hooks';
 import EventDataReport from '../event-data/EventDataReport';
