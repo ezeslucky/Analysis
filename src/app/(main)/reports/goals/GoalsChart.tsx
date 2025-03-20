@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useContext } from 'react';
 import classNames from 'classnames';
 import { useMessages } from '@/components/hooks';

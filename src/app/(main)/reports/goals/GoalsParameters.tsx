@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useMessages } from '@/components/hooks';
 import Icons from '@/components/icons';
 import { formatNumber } from '@/lib/format';

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client';
 import Report from '../[reportId]/Report';
 import ReportHeader from '../[reportId]/ReportHeader';

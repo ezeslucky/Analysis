@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import EmptyPlaceholder from '@/components/common/EmptyPlaceholder';
 import { useMessages } from '@/components/hooks';
 import { useContext } from 'react';

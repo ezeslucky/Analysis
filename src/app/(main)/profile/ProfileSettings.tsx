@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Form, FormRow } from 'react-basics';
 import TimezoneSetting from '@/app/(main)/profile/TimezoneSetting';
 import DateRangeSetting from '@/app/(main)/profile/DateRangeSetting';

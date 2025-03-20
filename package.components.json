@@ -1,8 +1,8 @@
 {
-  "name": "@umami/components",
+  "name": "@analyzr/components",
   "version": "0.1.0",
   "description": "Umami React components.",
-  "author": "Mike Cao <mike@mikecao.com>",
+  "author": "Mike Cao <ezeslucky>",
   "license": "MIT",
   "type": "module",
   "main": "./index.js",

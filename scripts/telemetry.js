@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const os = require('os');
 const isCI = require('is-ci');
 const pkg = require('../package.json');

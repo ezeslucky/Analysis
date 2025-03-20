@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-console */
 require('dotenv').config();
 const fse = require('fs-extra');

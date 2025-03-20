@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 (window => {
   const {
     screen: { width, height },

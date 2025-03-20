@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import 'dotenv/config';
 import replace from '@rollup/plugin-replace';
 import { terser } from 'rollup-plugin-terser';

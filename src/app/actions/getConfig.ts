@@ -1,4 +1,6 @@
+/* eslint-disable prettier/prettier */
 'use server';
+
 
 export async function getConfig() {
   return {

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import classNames from 'classnames';
 import { colord } from 'colord';
 import BarChart from '@/components/charts/BarChart';

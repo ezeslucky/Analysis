@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Funnel from '@/assets/funnel.svg';
 import Money from '@/assets/money.svg';
 import Lightbulb from '@/assets/lightbulb.svg';

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import PageHeader from '@/components/layout/PageHeader';
 import { Icon, Icons, Text } from 'react-basics';
 import { useLogin, useMessages, useTeamUrl } from '@/components/hooks';

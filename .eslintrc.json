@@ -24,7 +24,8 @@
     "plugin:css-modules/recommended",
     "plugin:cypress/recommended",
     "prettier",
-    "next"
+    "next",
+    "eslint:recommended", "plugin:prettier/recommended"
   ],
   "plugins": ["@typescript-eslint", "prettier", "promise", "css-modules", "cypress"],
   "rules": {

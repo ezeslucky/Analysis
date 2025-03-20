@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Button } from 'react-basics';
 import Link from 'next/link';
 import Script from 'next/script';

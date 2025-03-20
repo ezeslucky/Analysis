@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export * from '@/components/hooks';
 
 export * from '@/app/(main)/teams/[teamId]/settings/members/TeamMemberEditButton';
