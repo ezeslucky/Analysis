@@ -5,7 +5,7 @@
   gap: 10px;
   overflow: hidden;
 }
-
+ 
 .label {
   color: var(--base800);
   border: 1px solid var(--base300);

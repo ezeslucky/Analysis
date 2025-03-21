@@ -18,7 +18,7 @@ import {
   Text,
   TextField,
 } from 'react-basics';
-import styles from './FieldFilterEditForm.module.css';
+
 
 export interface FieldFilterFormProps {
   websiteId?: string;
@@ -135,11 +135,11 @@ export default function FieldFilterEditForm({
 
   return (
     <Form>
-      <FormRow label={label} className={styles.filter}>
+      <FormRow label={label} className="flex flex-col gap-5" >
         <Flexbox gap={10}>
           {allowFilterSelect && (
             <Dropdown
-              className={styles.dropdown}
+              className="min-w-[200px]"
               items={filterDropdownItems(name)}
               value={operator}
               renderValue={renderFilterValue}
@@ -151,7 +151,7 @@ export default function FieldFilterEditForm({
             </Dropdown>
           )}
           {selected && isEquals && (
-            <div className={styles.selected} onClick={handleReset}>
+            <div className="flex items-center justify-between px-4 py-2 min-w-[200px] font-black bg-base100 rounded-[var(--border-radius)] cursor-pointer whitespace-nowrap" onClick={handleReset}>
               <Text>{formatValue(selected, name)}</Text>
               <Icon>
                 <Icons.Close />
@@ -159,9 +159,9 @@ export default function FieldFilterEditForm({
             </div>
           )}
           {!selected && isEquals && (
-            <div className={styles.search}>
+            <div className=" relative">
               <SearchField
-                className={styles.text}
+                className="min-w-[200px]"
                 value={value}
                 placeholder={formatMessage(labels.enter)}
                 onChange={e => setValue(e.target.value)}
@@ -182,7 +182,7 @@ export default function FieldFilterEditForm({
           )}
           {!selected && !isEquals && (
             <TextField
-              className={styles.text}
+              className="min-w-[200px]"
               value={value}
               onChange={e => setValue(e.target.value)}
             />
@@ -200,7 +200,7 @@ const ResultsMenu = ({ values, type, isLoading, onSelect }) => {
   const { formatValue } = useFormat();
   if (isLoading) {
     return (
-      <Menu className={styles.menu} variant="popup">
+      <Menu className="absolute max-w-[300px] max-h-[210px]" variant="popup">
         <Item>
           <Loading icon="dots" position="center" />
         </Item>
@@ -213,7 +213,7 @@ const ResultsMenu = ({ values, type, isLoading, onSelect }) => {
   }
 
   return (
-    <Menu className={styles.menu} variant="popup" onSelect={onSelect}>
+    <Menu className="absolute max-w-[300px] max-h-[210px]" variant="popup" onSelect={onSelect}>
       {values?.map(({ value }) => {
         return <Item key={value}>{formatValue(value, type)}</Item>;
       })}

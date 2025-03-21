@@ -110,8 +110,8 @@ const FilterParameter = ({
 
   return (
     <PopupTrigger>
-      <div className={styles.item}>
-        <div className={styles.label}>{label}</div>
+      <div className="flex items-center flex-wrap gap-2 overflow-hidden">
+        <div className="text-base-800 border border-base-300 font-black px-2 py-1 rounded whitespace-nowrap">{label}</div>
         <div className={styles.op}>{operatorLabels[operator]}</div>
         <div className={styles.value}>{value}</div>
       </div>
