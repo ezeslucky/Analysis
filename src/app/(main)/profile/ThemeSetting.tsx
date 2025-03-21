@@ -10,9 +10,9 @@ export function ThemeSetting() {
   const { theme, saveTheme } = useTheme();
 
   return (
-    <div className={styles.buttons}>
+    <div className="flex gap-2">
       <Button
-        className={classNames({ [styles.active]: theme === 'light' })}
+        className={classNames({ ["border-2 border-primary-400"]: theme === 'light' })}
         onClick={() => saveTheme('light')}
       >
         <Icon>
@@ -20,7 +20,7 @@ export function ThemeSetting() {
         </Icon>
       </Button>
       <Button
-        className={classNames({ [styles.active]: theme === 'dark' })}
+        className={classNames({ ["border-2 border-primary-400 "]: theme === 'dark' })}
         onClick={() => saveTheme('dark')}
       >
         <Icon>

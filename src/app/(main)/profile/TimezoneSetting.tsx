@@ -20,11 +20,11 @@ export function TimezoneSetting() {
   return (
     <Flexbox gap={10}>
       <Dropdown
-        className={styles.dropdown}
+        className="w-[200px]"
         items={options}
         value={timezone}
         onChange={(value: any) => saveTimezone(value)}
-        menuProps={{ className: styles.menu }}
+        menuProps={{ className:"max-h-[300px] w-[300px]" }}
         allowSearch={true}
         onSearch={setSearch}
       >
