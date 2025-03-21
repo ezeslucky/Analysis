@@ -8,7 +8,7 @@ import PageHeader from '@/components/layout/PageHeader';
 import EventsChart from '@/components/metrics/EventsChart';
 import WebsiteChart from '../websites/[websiteId]/WebsiteChart';
 import { useApi, useNavigation } from '@/components/hooks';
-import styles from './TestConsole.module.css';
+
 
 export function TestConsole({ websiteId }: { websiteId: string }) {
   const { get, useQuery } = useApi();
@@ -23,13 +23,13 @@ export function TestConsole({ websiteId }: { websiteId: string }) {
   }
 
   function handleRunScript() {
-    window['umami'].track(props => ({
+    window['analyzr'].track(props => ({
       ...props,
       url: '/page-view',
       referrer: 'https://www.google.com',
     }));
-    window['umami'].track('track-event-no-data');
-    window['umami'].track('track-event-with-data', {
+    window['analyzr'].track('track-event-no-data');
+    window['analyzr'].track('track-event-with-data', {
       test: 'test-data',
       boolean: true,
       booleanError: 'true',
@@ -50,32 +50,32 @@ export function TestConsole({ websiteId }: { websiteId: string }) {
   }
 
   function handleRunRevenue() {
-    window['umami'].track(props => ({
+    window['analyzr'].track(props => ({
       ...props,
       url: '/checkout-cart',
       referrer: 'https://www.google.com',
     }));
-    window['umami'].track('checkout-cart', {
+    window['analyzr'].track('checkout-cart', {
       revenue: parseFloat((Math.random() * 1000).toFixed(2)),
       currency: 'USD',
     });
-    window['umami'].track('affiliate-link', {
+    window['analyzr'].track('affiliate-link', {
       revenue: parseFloat((Math.random() * 1000).toFixed(2)),
       currency: 'USD',
     });
-    window['umami'].track('promotion-link', {
+    window['analyzr'].track('promotion-link', {
       revenue: parseFloat((Math.random() * 1000).toFixed(2)),
       currency: 'USD',
     });
-    window['umami'].track('checkout-cart', {
+    window['analyzr'].track('checkout-cart', {
       revenue: parseFloat((Math.random() * 1000).toFixed(2)),
       currency: 'EUR',
     });
-    window['umami'].track('promotion-link', {
+    window['analyzr'].track('promotion-link', {
       revenue: parseFloat((Math.random() * 1000).toFixed(2)),
       currency: 'EUR',
     });
-    window['umami'].track('affiliate-link', {
+    window['analyzr'].track('affiliate-link', {
       item1: {
         productIdentity: 'ABC424',
         revenue: parseFloat((Math.random() * 10000).toFixed(2)),
@@ -90,7 +90,7 @@ export function TestConsole({ websiteId }: { websiteId: string }) {
   }
 
   function handleRunIdentify() {
-    window['umami'].identify({
+    window['analyzr'].identify({
       userId: 123,
       name: 'brian',
       number: Math.random() * 100,
@@ -122,16 +122,16 @@ export function TestConsole({ websiteId }: { websiteId: string }) {
         <WebsiteSelect websiteId={website?.id} onSelect={handleChange} />
       </PageHeader>
       {website && (
-        <div className={styles.container}>
+        <div className=" grid  gap-[30px] pb-10">
           <Script
             async
             data-website-id={websiteId}
             src={`${process.env.basePath || ''}/script.js`}
             data-cache="true"
           />
-          <div className={styles.actions}>
-            <div className={styles.group}>
-              <div className={styles.header}>Page links</div>
+          <div className="border border-[var(--base400)] rounded-md p-5 grid gap-10 grid-cols-3 min-w-[300px] shadow-[0_0_0_10px_var(--base100)]">
+            <div className="flex flex-col gap-2.5">
+              <div className="text-base font-bold my-5">Page links</div>
               <div>
                 <Link href={`/console/${websiteId}/page/1/?q=abc`}>page one</Link>
               </div>
@@ -139,14 +139,14 @@ export function TestConsole({ websiteId }: { websiteId: string }) {
                 <Link href={`/console/${websiteId}/page/2/?q=123 `}>page two</Link>
               </div>
               <div>
-                <a href="https://www.google.com" data-umami-event="external-link-direct">
+                <a href="https://www.google.com" data-analyzr-event="external-link-direct">
                   external link (direct)
                 </a>
               </div>
               <div>
                 <a
                   href="https://www.google.com"
-                  data-umami-event="external-link-tab"
+                  data-analyzr-event="external-link-tab"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -154,51 +154,51 @@ export function TestConsole({ websiteId }: { websiteId: string }) {
                 </a>
               </div>
             </div>
-            <div className={styles.group}>
-              <div className={styles.header}>Click events</div>
-              <Button id="send-event-button" data-umami-event="button-click" variant="primary">
+            <div className="flex flex-col gap-2.5">
+              <div className="text-base font-bold my-5">Click events</div>
+              <Button id="send-event-button" data-analyzr-event="button-click" variant="primary">
                 Send event
               </Button>
               <Button
                 id="send-event-data-button"
-                data-umami-event="button-click"
-                data-umami-event-name="bob"
-                data-umami-event-id="123"
+                data-analyzr-event="button-click"
+                data-analyzr-event-name="bob"
+                data-analyzr-event-id="123"
                 variant="primary"
               >
                 Send event with data
               </Button>
               <Button
                 id="generate-revenue-button"
-                data-umami-event="checkout-cart"
-                data-umami-event-revenue={(Math.random() * 10000).toFixed(2).toString()}
-                data-umami-event-currency="USD"
+                data-analyzr-event="checkout-cart"
+                data-analyzr-event-revenue={(Math.random() * 10000).toFixed(2).toString()}
+                data-analyzr-event-currency="USD"
                 variant="primary"
               >
                 Generate revenue data
               </Button>
               <Button
                 id="button-with-div-button"
-                data-umami-event="button-click"
-                data-umami-event-name={'bob'}
-                data-umami-event-id="123"
+                data-analyzr-event="button-click"
+                data-analyzr-event-name={'bob'}
+                data-analyzr-event-id="123"
                 variant="primary"
               >
-                <div className={styles.wrapped}>Button with div</div>
+                <div className="border border-blue-900 rounded-md px-4 py-2">Button with div</div>
               </Button>
-              <div data-umami-event="div-click" className={styles.wrapped}>
+              <div data-analyzr-event="div-click" className="border border-blue-900 rounded-md px-4 py-2">
                 DIV with attribute
               </div>
-              <div data-umami-event="div-click-one" className={styles.wrapped}>
-                <div data-umami-event="div-click-two" className={styles.wrapped}>
-                  <div data-umami-event="div-click-three" className={styles.wrapped}>
+              <div data-analyzr-event="div-click-one" className="border border-blue-900 rounded-md px-4 py-2">
+                <div data-analyzr-event="div-click-two" className="border border-blue-900 rounded-md px-4 py-2">
+                  <div data-analyzr-event="div-click-three" className="border border-blue-900 rounded-md px-4 py-2">
                     Nested DIV
                   </div>
                 </div>
               </div>
             </div>
-            <div className={styles.group}>
-              <div className={styles.header}>Javascript events</div>
+            <div className="flex flex-col gap-2.5">
+              <div className="text-base font-bold my-5">Javascript events</div>
               <Button id="manual-button" variant="primary" onClick={handleRunScript}>
                 Run script
               </Button>
