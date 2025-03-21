@@ -2,11 +2,11 @@
 'use client';
 import ProfileHeader from './ProfileHeader';
 import ProfileSettings from './ProfileSettings';
-import styles from './ProfilePage.module.css';
+
 
 export default function () {
   return (
-    <div className={styles.container}>
+    <div className="mx-auto">
       <ProfileHeader />
       <ProfileSettings />
     </div>
