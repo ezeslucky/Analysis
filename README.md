@@ -19,7 +19,7 @@ To run the project locally:
 ```bash
 yarn run dev
 ```
-Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
 
 ## 🤝 Contributing
 We welcome contributions! Follow these steps to contribute:
