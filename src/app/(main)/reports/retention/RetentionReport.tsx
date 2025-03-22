@@ -24,7 +24,9 @@ export default function RetentionReport({ reportId }: { reportId?: string }) {
     <Report reportId={reportId} defaultParameters={defaultParameters}>
       <ReportHeader icon={<Magnet />} />
       <ReportMenu>
-        <RetentionParameters />
+        <div className="flex flex-col justify-between border border-base400 rounded-[var(--border-radius)] leading-[32px] p-2.5 overflow-hidden">
+          <RetentionParameters />
+        </div>
       </ReportMenu>
       <ReportBody>
         <RetentionTable />
