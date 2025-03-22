@@ -15,7 +15,6 @@ import { formatLongCurrency, formatLongNumber } from '@/lib/format';
 import { useCallback, useContext, useMemo } from 'react';
 import { ReportContext } from '../[reportId]/Report';
 import RevenueTable from './RevenueTable';
-import styles from './RevenueView.module.css';
 
 export interface RevenueViewProps {
   isLoading?: boolean;
@@ -34,7 +33,7 @@ export function RevenueView({ isLoading }: RevenueViewProps) {
 
   const renderCountryName = useCallback(
     ({ x: code }) => (
-      <span className={classNames(locale, styles.row)}>
+      <span className="flex items-center gap-2.5">
         <TypeIcon type="country" value={code?.toLowerCase()} />
         {countryNames[code]}
       </span>
@@ -116,11 +115,11 @@ export function RevenueView({ isLoading }: RevenueViewProps) {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className="grid gap-5 mb-10">
         <MetricsBar isFetched={data}>
-          {metricData?.map(({ label, value, formatValue }) => {
-            return <MetricCard key={label} value={value} label={label} formatValue={formatValue} />;
-          })}
+          {metricData?.map(({ label, value, formatValue }) => (
+            <MetricCard key={label} value={value} label={label} formatValue={formatValue} />
+          ))}
         </MetricsBar>
         {data && (
           <>
