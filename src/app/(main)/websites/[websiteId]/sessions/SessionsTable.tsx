@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { GridColumn, GridTable } from 'react-basics';
 import { useFormat, useMessages, useTimezone } from '@/components/hooks';
 import Avatar from '@/components/common/Avatar';
-import styles from './SessionsTable.module.css';
 import TypeIcon from '@/components/common/TypeIcon';
 
 export function SessionsTable({ data = [] }: { data: any[]; showDomain?: boolean }) {
@@ -14,7 +13,7 @@ export function SessionsTable({ data = [] }: { data: any[]; showDomain?: boolean
     <GridTable data={data}>
       <GridColumn name="id" label={formatMessage(labels.session)} width="100px">
         {row => (
-          <Link href={`sessions/${row.id}`} className={styles.link}>
+          <Link href={`sessions/${row.id}`} className="flex items-center gap-5">
             <Avatar key={row.id} seed={row.id} size={64} />
           </Link>
         )}

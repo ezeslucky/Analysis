@@ -2,7 +2,6 @@ import { format, startOfDay, addHours } from 'date-fns';
 import { useLocale, useMessages, useWebsiteSessionsWeekly } from '@/components/hooks';
 import { LoadingPanel } from '@/components/common/LoadingPanel';
 import { getDayOfWeekAsDate } from '@/lib/date';
-import styles from './SessionsWeekly.module.css';
 import classNames from 'classnames';
 import { TooltipPopup } from 'react-basics';
 
@@ -38,9 +37,9 @@ export function SessionsWeekly({ websiteId }: { websiteId: string }) {
 
   return (
     <LoadingPanel {...(props as any)} data={data}>
-      <div key={data} className={styles.week}>
-        <div className={styles.day}>
-          <div className={styles.header}>&nbsp;</div>
+      <div key={data} className="flex justify-between relative">
+        <div className="flex flex-col items-start justify-start gap-[1px] relative">
+          <div className="text-center font-bold mb-2.5">&nbsp;</div>
           {Array(24)
             .fill(null)
             .map((_, i) => {
@@ -48,7 +47,7 @@ export function SessionsWeekly({ websiteId }: { websiteId: string }) {
                 .replace(/\D00 ?/, '')
                 .toLowerCase();
               return (
-                <div key={i} className={styles.hour}>
+                <div key={i} className="font-bold text-font-color300 h-5">
                   {label}
                 </div>
               );
@@ -58,21 +57,21 @@ export function SessionsWeekly({ websiteId }: { websiteId: string }) {
           daysOfWeek.map((index: number) => {
             const day = data[index];
             return (
-              <div key={index} className={styles.day}>
-                <div className={styles.header}>
+              <div key={index} className="flex flex-col items-start justify-start gap-[1px] relative">
+                <div className="text-center font-bold mb-2.5">
                   {format(getDayOfWeekAsDate(index), 'EEE', { locale: dateLocale })}
                 </div>
                 {day?.map((hour: number, j) => {
                   const pct = hour / max;
                   return (
-                    <div key={j} className={classNames(styles.cell)}>
+                    <div key={j} className="flex bg-base75 w-5 h-5 m-auto rounded-full items-start">
                       {hour > 0 && (
                         <TooltipPopup
                           label={`${formatMessage(labels.visitors)}: ${hour}`}
                           position="right"
                         >
                           <div
-                            className={styles.block}
+                            className="bg-primary400 w-5 h-5 rounded-full"
                             style={{ opacity: pct, transform: `scale(${pct})` }}
                           />
                         </TooltipPopup>

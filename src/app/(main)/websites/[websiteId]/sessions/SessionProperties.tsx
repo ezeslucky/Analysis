@@ -4,7 +4,6 @@ import { LoadingPanel } from '@/components/common/LoadingPanel';
 import PieChart from '@/components/charts/PieChart';
 import { useState } from 'react';
 import { CHART_COLORS } from '@/lib/constants';
-import styles from './SessionProperties.module.css';
 
 export function SessionProperties({ websiteId }: { websiteId: string }) {
   const [propertyName, setPropertyName] = useState('');
@@ -27,11 +26,11 @@ export function SessionProperties({ websiteId }: { websiteId: string }) {
 
   return (
     <LoadingPanel isLoading={isLoading} isFetched={isFetched} data={data} error={error}>
-      <div className={styles.container}>
-        <GridTable data={data} cardMode={false} className={styles.table}>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-15 mb-10">
+        <GridTable data={data} cardMode={false} className="self-start">
           <GridColumn name="propertyName" label={formatMessage(labels.property)}>
             {row => (
-              <div className={styles.link} onClick={() => setPropertyName(row.propertyName)}>
+              <div className="cursor-pointer hover:text-primary400" onClick={() => setPropertyName(row.propertyName)}>
                 {row.propertyName}
               </div>
             )}
@@ -39,8 +38,8 @@ export function SessionProperties({ websiteId }: { websiteId: string }) {
           <GridColumn name="total" label={formatMessage(labels.count)} alignment="end" />
         </GridTable>
         {propertyName && (
-          <div className={styles.chart}>
-            <div className={styles.title}>{propertyName}</div>
+          <div className="min-h-[620px]">
+            <div className="text-center font-bold my-5">{propertyName}</div>
             <PieChart key={propertyName} type="doughnut" data={chartData} />
           </div>
         )}
