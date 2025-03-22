@@ -2,7 +2,6 @@ import { isSameDay } from 'date-fns';
 import { Loading, Icon, StatusLight } from 'react-basics';
 import Icons from '@/components/icons';
 import { useSessionActivity, useTimezone } from '@/components/hooks';
-import styles from './SessionActivity.module.css';
 import { Fragment } from 'react';
 
 export function SessionActivity({
@@ -26,7 +25,7 @@ export function SessionActivity({
   let lastDay = null;
 
   return (
-    <div className={styles.timeline}>
+    <div className="flex flex-col gap-5">
       {data.map(({ eventId, createdAt, urlPath, eventName, visitId }) => {
         const showHeader = !lastDay || !isSameDay(new Date(lastDay), new Date(createdAt));
         lastDay = createdAt;
@@ -34,10 +33,10 @@ export function SessionActivity({
         return (
           <Fragment key={eventId}>
             {showHeader && (
-              <div className={styles.header}>{formatTimezoneDate(createdAt, 'PPPP')}</div>
+              <div className="font-bold">{formatTimezoneDate(createdAt, 'PPPP')}</div>
             )}
-            <div key={eventId} className={styles.row}>
-              <div className={styles.time}>
+            <div className="grid grid-cols-[max-content_max-content_1fr] items-center gap-5">
+              <div className="text-gray-500 w-36">
                 <StatusLight color={`#${visitId?.substring(0, 6)}`}>
                   {formatTimezoneDate(createdAt, 'h:mm:ss aaa')}
                 </StatusLight>
