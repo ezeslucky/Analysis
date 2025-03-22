@@ -19,7 +19,6 @@ import ParameterList from '../[reportId]/ParameterList';
 import PopupForm from '../[reportId]/PopupForm';
 import { ReportContext } from '../[reportId]/Report';
 import GoalsAddForm from './GoalsAddForm';
-import styles from './GoalsParameters.module.css';
 
 export function GoalsParameters() {
   const { report, runReport, updateReport, isRunning } = useContext(ReportContext);
@@ -99,13 +98,13 @@ export function GoalsParameters() {
                     onRemove={() => handleRemoveGoals(index)}
                   >
                     <Flexbox direction="column" gap={5}>
-                      <div className={styles.value}>{goal.value}</div>
+                      <div className="w-full mb-2 font-semibold">{goal.value}</div>
                       {goal.type === 'event-data' && (
-                        <div className={styles.eventData}>
+                        <div className="text-orange900 bg-orange100 text-[12px] font-black px-2 py-1 rounded-md w-fit">
                           {formatMessage(labels[goal.operator])}: {goal.property}
                         </div>
                       )}
-                      <div className={styles.goal}>
+                      <div className="text-blue900 bg-blue100 text-[12px] font-black px-2 py-1 rounded-md w-fit">
                         {formatMessage(labels.goal)}: {formatNumber(goal.goal)}
                       </div>
                     </Flexbox>
