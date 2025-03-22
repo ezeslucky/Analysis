@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useDateRange, useMessages, useNavigation } from '@/components/hooks';
 import { Grid, GridRow } from '@/components/layout/Grid';
 import SideNav from '@/components/layout/SideNav';
@@ -20,7 +21,6 @@ import { getCompareDate } from '@/lib/date';
 import { formatNumber } from '@/lib/format';
 import { useState } from 'react';
 import useStore from '@/store/websites';
-import styles from './WebsiteCompareTables.module.css';
 
 const views = {
   url: PagesTable,
@@ -51,76 +51,20 @@ export function WebsiteCompareTables({ websiteId }: { websiteId: string }) {
   const Component: typeof MetricsTable = views[view || 'url'] || (() => null);
 
   const items = [
-    {
-      key: 'url',
-      label: formatMessage(labels.pages),
-      url: renderUrl({ view: 'url' }),
-    },
-    {
-      key: 'referrer',
-      label: formatMessage(labels.referrers),
-      url: renderUrl({ view: 'referrer' }),
-    },
-    {
-      key: 'browser',
-      label: formatMessage(labels.browsers),
-      url: renderUrl({ view: 'browser' }),
-    },
-    {
-      key: 'os',
-      label: formatMessage(labels.os),
-      url: renderUrl({ view: 'os' }),
-    },
-    {
-      key: 'device',
-      label: formatMessage(labels.devices),
-      url: renderUrl({ view: 'device' }),
-    },
-    {
-      key: 'country',
-      label: formatMessage(labels.countries),
-      url: renderUrl({ view: 'country' }),
-    },
-    {
-      key: 'region',
-      label: formatMessage(labels.regions),
-      url: renderUrl({ view: 'region' }),
-    },
-    {
-      key: 'city',
-      label: formatMessage(labels.cities),
-      url: renderUrl({ view: 'city' }),
-    },
-    {
-      key: 'language',
-      label: formatMessage(labels.languages),
-      url: renderUrl({ view: 'language' }),
-    },
-    {
-      key: 'screen',
-      label: formatMessage(labels.screens),
-      url: renderUrl({ view: 'screen' }),
-    },
-    {
-      key: 'event',
-      label: formatMessage(labels.events),
-      url: renderUrl({ view: 'event' }),
-    },
-    {
-      key: 'query',
-      label: formatMessage(labels.queryParameters),
-      url: renderUrl({ view: 'query' }),
-    },
-    {
-      key: 'host',
-      label: formatMessage(labels.hosts),
-      url: renderUrl({ view: 'host' }),
-    },
-    {
-      key: 'tag',
-      label: formatMessage(labels.tags),
-      url: renderUrl({ view: 'tag' }),
-    },
+    { key: 'url', label: formatMessage(labels.pages), url: renderUrl({ view: 'url' }) },
+    { key: 'referrer', label: formatMessage(labels.referrers), url: renderUrl({ view: 'referrer' }) },
+    { key: 'browser', label: formatMessage(labels.browsers), url: renderUrl({ view: 'browser' }) },
+    { key: 'os', label: formatMessage(labels.os), url: renderUrl({ view: 'os' }) },
+    { key: 'device', label: formatMessage(labels.devices), url: renderUrl({ view: 'device' }) },
+    { key: 'country', label: formatMessage(labels.countries), url: renderUrl({ view: 'country' }) },
+    { key: 'region', label: formatMessage(labels.regions), url: renderUrl({ view: 'region' }) },
+    { key: 'city', label: formatMessage(labels.cities), url: renderUrl({ view: 'city' }) },
+    { key: 'language', label: formatMessage(labels.languages), url: renderUrl({ view: 'language' }) },
+    { key: 'screen', label: formatMessage(labels.screens), url: renderUrl({ view: 'screen' }) },
+    { key: 'event', label: formatMessage(labels.events), url: renderUrl({ view: 'event' }) },
+    { key: 'query', label: formatMessage(labels.queryParameters), url: renderUrl({ view: 'query' }) },
+    { key: 'host', label: formatMessage(labels.hosts), url: renderUrl({ view: 'host' }) },
+    { key: 'tag', label: formatMessage(labels.tags), url: renderUrl({ view: 'tag' }) },
   ];
 
   const renderChange = ({ x, y }) => {
@@ -143,11 +87,11 @@ export function WebsiteCompareTables({ websiteId }: { websiteId: string }) {
   };
 
   return (
-    <Grid className={styles.container}>
+    <Grid className="mb-15">
       <GridRow columns="compare">
-        <SideNav className={styles.nav} items={items} selectedKey={view} shallow={true} />
+        <SideNav className="w-[200px] mt-10" items={items} selectedKey={view} shallow={true} />
         <div>
-          <div className={styles.title}>{formatMessage(labels.previous)}</div>
+          <div className="text-base800 text-center font-bold">{formatMessage(labels.previous)}</div>
           <Component
             websiteId={websiteId}
             limit={20}
@@ -157,7 +101,7 @@ export function WebsiteCompareTables({ websiteId }: { websiteId: string }) {
           />
         </div>
         <div>
-          <div className={styles.title}> {formatMessage(labels.current)}</div>
+          <div className="text-base800 text-center font-bold">{formatMessage(labels.current)}</div>
           <Component
             websiteId={websiteId}
             limit={20}
