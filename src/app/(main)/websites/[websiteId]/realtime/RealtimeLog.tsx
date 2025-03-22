@@ -1,4 +1,4 @@
-import useFormat from '@/components//hooks/useFormat';
+import useFormat from '@/components/hooks/useFormat';
 import Empty from '@/components/common/Empty';
 import FilterButtons from '@/components/common/FilterButtons';
 import { useCountryNames, useLocale, useMessages, useTimezone } from '@/components/hooks';
@@ -10,7 +10,6 @@ import { useContext, useMemo, useState } from 'react';
 import { Icon, SearchField, StatusLight, Text } from 'react-basics';
 import { FixedSizeList } from 'react-window';
 import { WebsiteContext } from '../WebsiteProvider';
-import styles from './RealtimeLog.module.css';
 
 const TYPE_ALL = 'all';
 const TYPE_PAGEVIEW = 'pageview';
@@ -34,22 +33,10 @@ export function RealtimeLog({ data }: { data: RealtimeData }) {
   const [filter, setFilter] = useState(TYPE_ALL);
 
   const buttons = [
-    {
-      label: formatMessage(labels.all),
-      key: TYPE_ALL,
-    },
-    {
-      label: formatMessage(labels.views),
-      key: TYPE_PAGEVIEW,
-    },
-    {
-      label: formatMessage(labels.visitors),
-      key: TYPE_SESSION,
-    },
-    {
-      label: formatMessage(labels.events),
-      key: TYPE_EVENT,
-    },
+    { label: formatMessage(labels.all), key: TYPE_ALL },
+    { label: formatMessage(labels.views), key: TYPE_PAGEVIEW },
+    { label: formatMessage(labels.visitors), key: TYPE_SESSION },
+    { label: formatMessage(labels.events), key: TYPE_EVENT },
   ];
 
   const getTime = ({ createdAt, firstAt }) => formatTimezoneDate(firstAt || createdAt, 'pp');
@@ -76,7 +63,7 @@ export function RealtimeLog({ data }: { data: RealtimeData }) {
           <a
             key="a"
             href={`//${website?.domain}${url}`}
-            className={styles.link}
+            className="text-base900 no-underline hover:text-primary400"
             target="_blank"
             rel="noreferrer noopener"
           >
@@ -90,7 +77,7 @@ export function RealtimeLog({ data }: { data: RealtimeData }) {
       return (
         <a
           href={`//${website?.domain}${url}`}
-          className={styles.link}
+          className="text-base900 no-underline hover:text-primary400"
           target="_blank"
           rel="noreferrer noopener"
         >
@@ -112,13 +99,13 @@ export function RealtimeLog({ data }: { data: RealtimeData }) {
   const Row = ({ index, style }) => {
     const row = logs[index];
     return (
-      <div className={styles.row} style={style}>
+      <div className="flex items-center gap-2.5 h-[50px] border-b border-base300" style={style}>
         <div>
           <StatusLight color={getColor(row)} />
         </div>
-        <div className={styles.time}>{getTime(row)}</div>
-        <div className={styles.detail}>
-          <Icon className={styles.icon}>{getIcon(row)}</Icon>
+        <div className="min-w-[60px] overflow-hidden">{getTime(row)}</div>
+        <div className="flex items-center flex-1 gap-2.5 whitespace-nowrap text-ellipsis overflow-hidden">
+          <Icon className="me-2.5">{getIcon(row)}</Icon>
           <Text>{getDetail(row)}</Text>
         </div>
       </div>
@@ -157,13 +144,15 @@ export function RealtimeLog({ data }: { data: RealtimeData }) {
   }, [data, filter, formatValue, search]);
 
   return (
-    <div className={styles.table}>
-      <div className={styles.actions}>
-        <SearchField className={styles.search} value={search} onSearch={setSearch} />
+    <div className="text-[var(--font-size-sm)] overflow-hidden h-full">
+      <div className="flex gap-5 items-center justify-between mb-2.5 md:flex-col">
+        <SearchField className="max-w-[300px] md:max-w-full" value={search} onSearch={setSearch} />
         <FilterButtons items={buttons} selectedKey={filter} onSelect={setFilter} />
       </div>
-      <div className={styles.header}>{formatMessage(labels.activity)}</div>
-      <div className={styles.body}>
+      <div className="flex items-center justify-between text-[var(--font-size-md)] font-bold leading-[40px]">
+        {formatMessage(labels.activity)}
+      </div>
+      <div className="overflow-auto h-full">
         {logs?.length === 0 && <Empty />}
         {logs?.length > 0 && (
           <FixedSizeList width="100%" height={500} itemCount={logs.length} itemSize={50}>

@@ -1,8 +1,6 @@
 import { useCallback } from 'react';
 import ListTable from '@/components/metrics/ListTable';
 import { useLocale, useCountryNames, useMessages } from '@/components/hooks';
-import classNames from 'classnames';
-import styles from './RealtimeCountries.module.css';
 import TypeIcon from '@/components/common/TypeIcon';
 
 export function RealtimeCountries({ data }) {
@@ -12,7 +10,7 @@ export function RealtimeCountries({ data }) {
 
   const renderCountryName = useCallback(
     ({ x: code }) => (
-      <span className={classNames(styles.row)}>
+      <span className="flex items-center gap-2.5">
         <TypeIcon type="country" value={code?.toLowerCase()} />
         {countryNames[code]}
       </span>
