@@ -9,7 +9,7 @@ import PopupForm from '../[reportId]/PopupForm';
 import { ReportContext } from './Report';
 import FieldFilterEditForm from '../[reportId]/FieldFilterEditForm';
 import { isSearchOperator } from '@/lib/params';
-import styles from './FilterParameters.module.css';
+
 
 export function FilterParameters() {
   const { report, updateReport } = useContext(ReportContext);
@@ -112,10 +112,10 @@ const FilterParameter = ({
     <PopupTrigger>
       <div className="flex items-center flex-wrap gap-2 overflow-hidden">
         <div className="text-base-800 border border-base-300 font-black px-2 py-1 rounded whitespace-nowrap">{label}</div>
-        <div className={styles.op}>{operatorLabels[operator]}</div>
-        <div className={styles.value}>{value}</div>
+        <div className="text-blue-900 bg-blue-100 text-[12px] font-black px-2 py-0.5 rounded text-uppercase whitespace-nowrap">{operatorLabels[operator]}</div>
+        <div className="text-gray-900 bg-gray-100 font-black px-2 py-0.5 rounded whitespace-nowrap">{value}</div>
       </div>
-      <Popup className={styles.edit} alignment="start">
+      <Popup className=" mt-5" alignment="start">
         {(close: any) => (
           <PopupForm>
             <FieldFilterEditForm
