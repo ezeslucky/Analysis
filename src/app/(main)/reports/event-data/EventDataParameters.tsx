@@ -9,7 +9,6 @@ import { ReportContext } from '../[reportId]/Report';
 import FieldAddForm from '../[reportId]/FieldAddForm';
 import ParameterList from '../[reportId]/ParameterList';
 import BaseParameters from '../[reportId]/BaseParameters';
-import styles from './EventDataParameters.module.css';
 
 function useFields(websiteId, startDate, endDate) {
   const { get, useQuery } = useApi();
@@ -108,17 +107,17 @@ export function EventDataParameters() {
                 {parameterData[group].map(({ name, value }) => {
                   return (
                     <ParameterList.Item key={name} onRemove={() => handleRemove(group)}>
-                      <div className={styles.parameter}>
+                      <div className="flex gap-2 overflow-hidden whitespace-nowrap text-ellipsis min-w-0">
                         {group === REPORT_PARAMETERS.fields && (
                           <>
                             <div>{name}</div>
-                            <div className={styles.op}>{value}</div>
+                            <div className="font-bold">{value}</div>
                           </>
                         )}
                         {group === REPORT_PARAMETERS.filters && (
                           <>
                             <div>{name}</div>
-                            <div className={styles.op}>{value[0]}</div>
+                            <div className="font-bold">{value[0]}</div>
                             <div>{value[1]}</div>
                           </>
                         )}
