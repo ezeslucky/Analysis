@@ -10,7 +10,6 @@ import { useMessages, useTeamUrl } from '@/components/hooks';
 import PageHeader from '@/components/layout/PageHeader';
 import Link from 'next/link';
 import { Button, Icon, Icons, Text } from 'react-basics';
-import styles from './ReportTemplates.module.css';
 
 export function ReportTemplates({ showHeader = true }: { showHeader?: boolean }) {
   const { formatMessage, labels } = useMessages();
@@ -64,7 +63,7 @@ export function ReportTemplates({ showHeader = true }: { showHeader?: boolean })
   return (
     <>
       {showHeader && <PageHeader title={formatMessage(labels.reports)} />}
-      <div className={styles.reports}>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(360px,1fr))] gap-5">
         {reports.map(({ title, description, url, icon }) => {
           return (
             <ReportItem key={title} icon={icon} title={title} description={description} url={url} />
@@ -79,13 +78,13 @@ function ReportItem({ title, description, url, icon }) {
   const { formatMessage, labels } = useMessages();
 
   return (
-    <div className={styles.report}>
-      <div className={styles.title}>
+    <div className="flex flex-col gap-5 p-5 border border-base500 rounded-lg shadow-sm bg-white">
+      <div className="flex items-center gap-2 text-lg font-bold">
         <Icon size="lg">{icon}</Icon>
         <Text>{title}</Text>
       </div>
-      <div className={styles.description}>{description}</div>
-      <div className={styles.buttons}>
+      <div className="flex-1 text-base text-gray-700">{description}</div>
+      <div className="flex items-center justify-center">
         <Link href={url}>
           <Button variant="primary">
             <Icon>
