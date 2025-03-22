@@ -15,7 +15,7 @@ export function ParameterList({ children }: ParameterListProps) {
   const { formatMessage, labels } = useMessages();
 
   return (
-    <div className={styles.list}>
+    <div className="flex flex-col gap-4">
       {!children && <Empty message={formatMessage(labels.none)} />}
       {children}
     </div>
@@ -36,10 +36,10 @@ const Item = ({
   onRemove?: () => void;
 }) => {
   return (
-    <div className={classNames(styles.item, className)} onClick={onClick}>
-      {icon && <Icon className={styles.icon}>{icon}</Icon>}
-      <div className={styles.value}>{children}</div>
-      <Icon className={styles.close} onClick={onRemove}>
+    <div className={classNames("flex gap-3 w-full flex-nowrap p-3 border border-base400 rounded-[var(--border-radius)] shadow-[1px_1px_1px_var(--base400)]", className)} onClick={onClick}>
+      {icon && <Icon className="h-6">{icon}</Icon>}
+      <div className="flex flex-row items-center flex-wrap flex-1">{children}</div>
+      <Icon className="h-6" onClick={onRemove}>
         <Icons.Close />
       </Icon>
     </div>
