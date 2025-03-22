@@ -18,7 +18,9 @@ export default function FunnelReport({ reportId }: { reportId?: string }) {
     <Report reportId={reportId} defaultParameters={defaultParameters}>
       <ReportHeader icon={<Funnel />} />
       <ReportMenu>
-        <FunnelParameters />
+        <div className="flex flex-col justify-between border border-base400 rounded-[var(--border-radius)] leading-8 p-2.5 overflow-hidden">
+          <FunnelParameters />
+        </div>
       </ReportMenu>
       <ReportBody>
         <FunnelChart />

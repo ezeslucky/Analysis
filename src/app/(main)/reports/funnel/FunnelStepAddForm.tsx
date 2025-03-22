@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { useMessages } from '@/components/hooks';
 import { Button, FormRow, TextField, Flexbox, Dropdown, Item } from 'react-basics';
-import styles from './FunnelStepAddForm.module.css';
 
 export interface FunnelStepAddFormProps {
   type?: string;
@@ -49,7 +48,7 @@ export function FunnelStepAddForm({
       <FormRow label={formatMessage(defaultValue ? labels.update : labels.add)}>
         <Flexbox gap={10}>
           <Dropdown
-            className={styles.dropdown}
+            className="w-[140px]"
             items={items}
             value={type}
             renderValue={renderTypeValue}
@@ -60,7 +59,7 @@ export function FunnelStepAddForm({
             }}
           </Dropdown>
           <TextField
-            className={styles.input}
+            className="w-[200px]"
             value={value}
             onChange={handleChange}
             autoFocus={true}
