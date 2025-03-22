@@ -3,7 +3,7 @@ import { createContext, ReactNode } from 'react';
 import { Loading } from 'react-basics';
 import classNames from 'classnames';
 import { useReport } from '@/components/hooks';
-import styles from './Report.module.css';
+
 
 export const ReportContext = createContext(null);
 
@@ -26,7 +26,7 @@ export function Report({
 
   return (
     <ReportContext.Provider value={report}>
-      <div className={classNames(styles.container, className)}>{children}</div>
+      <div className={classNames("grid grid-rows-[max-content_1fr] grid-cols-[max-content_1fr] mb-[60px] h-[90vh]", className)}>{children}</div>
     </ReportContext.Provider>
   );
 }

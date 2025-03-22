@@ -10,7 +10,7 @@ export function ReportBody({ children }) {
     return null;
   }
 
-  return <div className={styles.body}>{children}</div>;
+  return <div className="pl-5 row-start-2 row-end-3 col-start-2 col-end-3">{children}</div>;
 }
 
 export default ReportBody;
