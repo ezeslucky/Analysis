@@ -3,7 +3,6 @@ import { Text, Icon, Button, Popup, Menu, Item, PopupTrigger, Flexbox } from 're
 import classNames from 'classnames';
 import Icons from '@/components/icons';
 import { useLogin, useMessages, useTeams, useTeamUrl } from '@/components/hooks';
-import styles from './TeamsButton.module.css';
 
 export function TeamsButton({
   className,
@@ -31,7 +30,7 @@ export function TeamsButton({
 
   return (
     <PopupTrigger>
-      <Button className={classNames(styles.button, className)} variant="quiet">
+      <Button className={classNames('font-bold', className)} variant="quiet">
         <Icon>{teamId ? <Icons.Users /> : <Icons.User />}</Icon>
         {showText && <Text>{teamId ? team?.name : user.username}</Text>}
         <Icon>
@@ -40,20 +39,24 @@ export function TeamsButton({
       </Button>
       <Popup alignment="end">
         {(close: () => void) => (
-          <Menu className={styles.menu} variant="popup" onSelect={handleSelect.bind(null, close)}>
-            <div className={styles.heading}>{formatMessage(labels.myAccount)}</div>
-            <Item key={user.id} className={classNames({ [styles.selected]: !teamId })}>
-              <Flexbox gap={10} alignItems="center">
+          <Menu className="bg-gray-100 min-w-[260px]" variant="popup" onSelect={handleSelect.bind(null, close)}>
+            <div className="text-gray-600 text-xs font-bold uppercase px-4 py-2 border-b border-gray-300">
+              {formatMessage(labels.myAccount)}
+            </div>
+            <Item key={user.id} className={classNames({ 'font-bold': !teamId })}>
+              <Flexbox gap={2} alignItems="center">
                 <Icon>
                   <Icons.User />
                 </Icon>
                 <Text>{user.username}</Text>
               </Flexbox>
             </Item>
-            <div className={styles.heading}>{formatMessage(labels.team)}</div>
+            <div className="text-gray-600 text-xs font-bold uppercase px-4 py-2 border-b border-gray-300">
+              {formatMessage(labels.team)}
+            </div>
             {result?.data?.map(({ id, name }) => (
-              <Item key={id} className={classNames({ [styles.selected]: id === teamId })}>
-                <Flexbox gap={10} alignItems="center">
+              <Item key={id} className={classNames({ 'font-bold': id === teamId })}>
+                <Flexbox gap={2} alignItems="center">
                   <Icon>
                     <Icons.Users />
                   </Icon>
