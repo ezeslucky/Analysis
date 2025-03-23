@@ -8,7 +8,6 @@ import { formatShortTime, formatLongNumber } from '@/lib/format';
 import useWebsiteStats from '@/components/hooks/queries/useWebsiteStats';
 import useStore, { setWebsiteDateCompare } from '@/store/websites';
 import WebsiteFilterButton from './WebsiteFilterButton';
-import styles from './WebsiteMetricsBar.module.css';
 
 export function WebsiteMetricsBar({
   websiteId,
@@ -84,38 +83,36 @@ export function WebsiteMetricsBar({
   return (
     <div
       ref={ref}
-      className={classNames(styles.container, {
-        [styles.sticky]: sticky,
-        [styles.isSticky]: sticky && isSticky,
-      })}
+      className={classNames(
+        'grid grid-cols-[2fr_1fr] justify-between items-center bg-base50 z-[var(--z-index-above)] min-h-[120px] pb-5 lg:grid-cols-1 lg:py-5',
+        { 'sticky top-[-1px]': sticky, 'py-2.5 border-b border-base300': sticky && isSticky },
+      )}
     >
       <div>
         <MetricsBar isLoading={isLoading} isFetched={isFetched} error={error}>
-          {metrics.map(({ label, value, prev, change, formatValue, reverseColors }) => {
-            return (
-              <MetricCard
-                key={label}
-                value={value}
-                previousValue={prev}
-                label={label}
-                change={change}
-                formatValue={formatValue}
-                reverseColors={reverseColors}
-                showChange={!isAllTime && (compareMode || showChange)}
-                showPrevious={!isAllTime && compareMode}
-              />
-            );
-          })}
+          {metrics.map(({ label, value, prev, change, formatValue, reverseColors }) => (
+            <MetricCard
+              key={label}
+              value={value}
+              previousValue={prev}
+              label={label}
+              change={change}
+              formatValue={formatValue}
+              reverseColors={reverseColors}
+              showChange={!isAllTime && (compareMode || showChange)}
+              showPrevious={!isAllTime && compareMode}
+            />
+          ))}
         </MetricsBar>
       </div>
-      <div className={styles.actions}>
+      <div className="flex flex-col items-end gap-2.5 flex-wrap lg:my-5">
         {showFilter && <WebsiteFilterButton websiteId={websiteId} />}
         <WebsiteDateFilter websiteId={websiteId} showAllTime={!compareMode} />
         {compareMode && (
-          <div className={styles.vs}>
+          <div className="flex items-center justify-end w-full gap-2.5">
             <b>VS</b>
             <Dropdown
-              className={styles.dropdown}
+              className="min-w-[200px]"
               items={items}
               value={dateCompare || 'prev'}
               renderValue={value => items.find(i => i.value === value)?.label}

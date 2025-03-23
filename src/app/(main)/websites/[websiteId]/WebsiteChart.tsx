@@ -43,14 +43,16 @@ export function WebsiteChart({
   }, [data, startDate, endDate, unit]);
 
   return (
-    <PageviewsChart
-      data={chartData}
-      minDate={startDate.toISOString()}
-      maxDate={endDate.toISOString()}
-      unit={unit}
-      isLoading={isLoading}
-      isAllTime={value === 'all'}
-    />
+    <div className="relative flex flex-col self-stretch">
+      <PageviewsChart
+        data={chartData}
+        minDate={startDate.toISOString()}
+        maxDate={endDate.toISOString()}
+        unit={unit}
+        isLoading={isLoading}
+        isAllTime={value === 'all'}
+      />
+    </div>
   );
 }
 
