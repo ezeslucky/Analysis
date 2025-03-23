@@ -17,7 +17,6 @@ import RegionsTable from '@/components/metrics/RegionsTable';
 import ScreenTable from '@/components/metrics/ScreenTable';
 import TagsTable from '@/components/metrics/TagsTable';
 import ChannelsTable from '@/components/metrics/ChannelsTable';
-import styles from './WebsiteExpandedView.module.css';
 
 const views = {
   url: PagesTable,
@@ -57,81 +56,21 @@ export default function WebsiteExpandedView({
   } = useNavigation();
 
   const items = [
-    {
-      key: 'url',
-      label: formatMessage(labels.pages),
-      url: renderUrl({ view: 'url' }),
-    },
-    {
-      key: 'referrer',
-      label: formatMessage(labels.referrers),
-      url: renderUrl({ view: 'referrer' }),
-    },
-    {
-      key: 'channel',
-      label: formatMessage(labels.channels),
-      url: renderUrl({ view: 'channel' }),
-    },
-    {
-      key: 'browser',
-      label: formatMessage(labels.browsers),
-      url: renderUrl({ view: 'browser' }),
-    },
-    {
-      key: 'os',
-      label: formatMessage(labels.os),
-      url: renderUrl({ view: 'os' }),
-    },
-    {
-      key: 'device',
-      label: formatMessage(labels.devices),
-      url: renderUrl({ view: 'device' }),
-    },
-    {
-      key: 'country',
-      label: formatMessage(labels.countries),
-      url: renderUrl({ view: 'country' }),
-    },
-    {
-      key: 'region',
-      label: formatMessage(labels.regions),
-      url: renderUrl({ view: 'region' }),
-    },
-    {
-      key: 'city',
-      label: formatMessage(labels.cities),
-      url: renderUrl({ view: 'city' }),
-    },
-    {
-      key: 'language',
-      label: formatMessage(labels.languages),
-      url: renderUrl({ view: 'language' }),
-    },
-    {
-      key: 'screen',
-      label: formatMessage(labels.screens),
-      url: renderUrl({ view: 'screen' }),
-    },
-    {
-      key: 'event',
-      label: formatMessage(labels.events),
-      url: renderUrl({ view: 'event' }),
-    },
-    {
-      key: 'query',
-      label: formatMessage(labels.queryParameters),
-      url: renderUrl({ view: 'query' }),
-    },
-    {
-      key: 'host',
-      label: formatMessage(labels.hosts),
-      url: renderUrl({ view: 'host' }),
-    },
-    {
-      key: 'tag',
-      label: formatMessage(labels.tags),
-      url: renderUrl({ view: 'tag' }),
-    },
+    { key: 'url', label: formatMessage(labels.pages), url: renderUrl({ view: 'url' }) },
+    { key: 'referrer', label: formatMessage(labels.referrers), url: renderUrl({ view: 'referrer' }) },
+    { key: 'channel', label: formatMessage(labels.channels), url: renderUrl({ view: 'channel' }) },
+    { key: 'browser', label: formatMessage(labels.browsers), url: renderUrl({ view: 'browser' }) },
+    { key: 'os', label: formatMessage(labels.os), url: renderUrl({ view: 'os' }) },
+    { key: 'device', label: formatMessage(labels.devices), url: renderUrl({ view: 'device' }) },
+    { key: 'country', label: formatMessage(labels.countries), url: renderUrl({ view: 'country' }) },
+    { key: 'region', label: formatMessage(labels.regions), url: renderUrl({ view: 'region' }) },
+    { key: 'city', label: formatMessage(labels.cities), url: renderUrl({ view: 'city' }) },
+    { key: 'language', label: formatMessage(labels.languages), url: renderUrl({ view: 'language' }) },
+    { key: 'screen', label: formatMessage(labels.screens), url: renderUrl({ view: 'screen' }) },
+    { key: 'event', label: formatMessage(labels.events), url: renderUrl({ view: 'event' }) },
+    { key: 'query', label: formatMessage(labels.queryParameters), url: renderUrl({ view: 'query' }) },
+    { key: 'host', label: formatMessage(labels.hosts), url: renderUrl({ view: 'host' }) },
+    { key: 'tag', label: formatMessage(labels.tags), url: renderUrl({ view: 'tag' }) },
   ];
 
   const DetailsComponent = views[view] || (() => null);
@@ -143,11 +82,11 @@ export default function WebsiteExpandedView({
   const renderValue = (value: string) => items.find(({ key }) => key === value)?.label;
 
   return (
-    <div className={styles.layout}>
-      <div className={styles.menu}>
+    <div className="grid grid-cols-[300px_1fr] border-t border-base300 md:grid-cols-1">
+      <div className="flex flex-col relative pr-5 py-5">
         <LinkButton
           href={renderUrl({ view: undefined })}
-          className={styles.back}
+          className="inline-flex items-center self-center mb-5 md:self-start md:m-0"
           variant="quiet"
           scroll={false}
         >
@@ -156,9 +95,9 @@ export default function WebsiteExpandedView({
           </Icon>
           <Text>{formatMessage(labels.back)}</Text>
         </LinkButton>
-        <SideNav className={styles.nav} items={items} selectedKey={view} shallow={true} />
+        <SideNav className="hidden md:hidden" items={items} selectedKey={view} shallow={true} />
         <Dropdown
-          className={styles.dropdown}
+          className="hidden md:flex w-[200px] self-end"
           items={items}
           value={view}
           renderValue={renderValue}
@@ -168,7 +107,7 @@ export default function WebsiteExpandedView({
           {({ key, label }) => <Item key={key}>{label}</Item>}
         </Dropdown>
       </div>
-      <div className={styles.content}>
+      <div className="min-h-[800px] pl-5 py-5 border-l border-base300 md:border-0">
         <DetailsComponent
           websiteId={websiteId}
           domainName={domainName}

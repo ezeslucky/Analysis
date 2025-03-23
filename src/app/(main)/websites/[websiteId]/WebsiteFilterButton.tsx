@@ -3,7 +3,6 @@ import PopupForm from '@/app/(main)/reports/[reportId]/PopupForm';
 import FilterSelectForm from '@/app/(main)/reports/[reportId]/FilterSelectForm';
 import { useFields, useMessages, useNavigation, useDateRange } from '@/components/hooks';
 import { OPERATOR_PREFIXES } from '@/lib/constants';
-import styles from './WebsiteFilterButton.module.css';
 
 export function WebsiteFilterButton({
   websiteId,
@@ -27,35 +26,32 @@ export function WebsiteFilterButton({
 
   const handleAddFilter = ({ name, operator, value }) => {
     const prefix = OPERATOR_PREFIXES[operator];
-
     router.push(renderUrl({ [name]: prefix + value }));
   };
 
   return (
     <PopupTrigger className={className}>
-      <Button className={styles.button} variant="quiet">
+      <Button className="font-bold" variant="quiet">
         <Icon>
           <Icons.Plus />
         </Icon>
         {showText && <Text>{formatMessage(labels.filter)}</Text>}
       </Button>
       <Popup position={position} alignment={alignment}>
-        {(close: () => void) => {
-          return (
-            <PopupForm>
-              <FilterSelectForm
-                websiteId={websiteId}
-                fields={fields}
-                startDate={startDate}
-                endDate={endDate}
-                onChange={value => {
-                  handleAddFilter(value);
-                  close();
-                }}
-              />
-            </PopupForm>
-          );
-        }}
+        {(close: () => void) => (
+          <PopupForm>
+            <FilterSelectForm
+              websiteId={websiteId}
+              fields={fields}
+              startDate={startDate}
+              endDate={endDate}
+              onChange={value => {
+                handleAddFilter(value);
+                close();
+              }}
+            />
+          </PopupForm>
+        )}
       </Popup>
     </PopupTrigger>
   );
