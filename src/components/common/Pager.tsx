@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { Button, Icon, Icons } from 'react-basics';
 import { useMessages } from '@/components/hooks';
-import styles from './Pager.module.css';
 
 export interface PagerProps {
   page: number;
@@ -34,15 +33,22 @@ export function Pager({ page, pageSize, count, onPageChange, className }: PagerP
   }
 
   return (
-    <div className={classNames(styles.pager, className)}>
-      <div className={styles.count}>{formatMessage(labels.numberOfRecords, { x: count })}</div>
-      <div className={styles.nav}>
+    <div
+      className={classNames(
+        'grid grid-cols-3 items-center md:grid-cols-2',
+        className
+      )}
+    >
+      <div className="text-gray-600 font-bold">
+        {formatMessage(labels.numberOfRecords, { x: count })}
+      </div>
+      <div className="flex items-center justify-center md:justify-end">
         <Button onClick={() => handlePageChange(-1)} disabled={firstPage}>
           <Icon rotate={90}>
             <Icons.ChevronDown />
           </Icon>
         </Button>
-        <div className={styles.text}>
+        <div className="text-base mx-4 text-center">
           {formatMessage(labels.pageOf, { current: page, total: maxPage })}
         </div>
         <Button onClick={() => handlePageChange(1)} disabled={lastPage}>

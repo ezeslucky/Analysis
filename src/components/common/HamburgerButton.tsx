@@ -10,7 +10,11 @@ export function HamburgerButton({ menuItems }: { menuItems: any[] }) {
 
   return (
     <>
-      <Button variant="quiet" onClick={handleClick}>
+      <Button
+        variant="quiet"
+        onClick={handleClick}
+        className="hidden md:flex"
+      >
         <Icon>{active ? <Icons.Close /> : <Icons.Menu />}</Icon>
       </Button>
       {active && <MobileMenu items={menuItems} onClose={handleClose} />}
