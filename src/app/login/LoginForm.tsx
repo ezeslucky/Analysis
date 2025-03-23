@@ -14,7 +14,6 @@ import { useApi, useMessages } from '@/components/hooks';
 import { setUser } from '@/store/app';
 import { setClientAuthToken } from '@/lib/client';
 import Logo from '@/assets/logo.svg';
-import styles from './LoginForm.module.css';
 
 export function LoginForm() {
   const { formatMessage, labels, getMessage } = useMessages();
@@ -29,19 +28,18 @@ export function LoginForm() {
       onSuccess: async ({ token, user }) => {
         setClientAuthToken(token);
         setUser(user);
-
         router.push('/dashboard');
       },
     });
   };
 
   return (
-    <div className="w-96 mx-auto transform -translate-y-1/4"> 
-      <Icon className=" w-full" size="xl">
+    <div className="w-96 mx-auto transform -translate-y-1/4">
+      <Icon className="w-full" size="xl">
         <Logo />
       </Icon>
-      <div className={styles.title}>Analyzr</div>
-      <Form className={styles.form} onSubmit={handleSubmit} error={getMessage(error)}>
+      <div className="text-2xl font-bold text-center my-7.5">Analyzr</div>
+      <Form className="flex flex-col mx-auto w-72" onSubmit={handleSubmit} error={getMessage(error)}>
         <FormRow label={formatMessage(labels.username)}>
           <FormInput
             data-test="input-username"
@@ -63,7 +61,7 @@ export function LoginForm() {
         <FormButtons>
           <SubmitButton
             data-test="button-submit"
-            className={styles.button}
+            className="flex-1 justify-center"
             variant="primary"
             disabled={isPending}
           >

@@ -4,20 +4,19 @@ import LanguageButton from '@/components/input/LanguageButton';
 import ThemeButton from '@/components/input/ThemeButton';
 import SettingsButton from '@/components/input/SettingsButton';
 import Icons from '@/components/icons';
-import styles from './Header.module.css';
 
 export function Header() {
   return (
-    <header className={styles.header}>
+    <header className="flex flex-row items-center justify-between w-full h-[100px]">
       <div>
-        <Link href="/" target="_blank" className={styles.title}>
+        <Link href="/" target="_blank" className="flex flex-row items-center gap-2.5 text-lg font-bold text-font-color100 !important">
           <Icon size="lg">
             <Icons.Logo />
           </Icon>
           <Text>Analyzr</Text>
         </Link>
       </div>
-      <div className={styles.buttons}>
+      <div className="flex flex-row items-center justify-end md:flex-1">
         <ThemeButton />
         <LanguageButton />
         <SettingsButton />
