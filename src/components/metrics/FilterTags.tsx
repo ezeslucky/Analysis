@@ -12,7 +12,6 @@ import PopupForm from '@/app/(main)/reports/[reportId]/PopupForm';
 import FieldFilterEditForm from '@/app/(main)/reports/[reportId]/FieldFilterEditForm';
 import { OPERATOR_PREFIXES } from '@/lib/constants';
 import { isSearchOperator, parseParameterValue } from '@/lib/params';
-import styles from './FilterTags.module.css';
 import WebsiteFilterButton from '@/app/(main)/websites/[websiteId]/WebsiteFilterButton';
 
 export function FilterTags({
@@ -59,8 +58,8 @@ export function FilterTags({
   };
 
   return (
-    <div className={styles.filters}>
-      <div className={styles.label}>{formatMessage(labels.filters)}</div>
+    <div className="flex flex-wrap items-center gap-2 bg-gray-200 p-3 border border-gray-400 rounded-lg mb-5">
+      <div className="font-bold">{formatMessage(labels.filters)}</div>
       {Object.keys(params).map(key => {
         if (!params[key]) {
           return null;
@@ -71,11 +70,14 @@ export function FilterTags({
 
         return (
           <PopupTrigger key={key}>
-            <div key={key} className={styles.tag}>
-              <Text className={styles.name}>{label}</Text>
-              <Text className={styles.operator}>{operatorLabels[operator]}</Text>
-              <Text className={styles.value}>{paramValue}</Text>
-              <Icon className={styles.icon} onClick={e => handleCloseFilter(key, e)}>
+            <div
+              key={key}
+              className="flex items-center gap-1 text-xs bg-gray-100 border border-gray-400 rounded-lg shadow px-3 py-1 cursor-pointer hover:bg-gray-300"
+            >
+              <Text className="font-bold text-gray-800">{label}</Text>
+              <Text className="font-extrabold lowercase">{operatorLabels[operator]}</Text>
+              <Text className="font-bold text-gray-700">{paramValue}</Text>
+              <Icon className="ml-2 p-1 rounded-full hover:bg-gray-300" onClick={e => handleCloseFilter(key, e)}>
                 <Icons.Close />
               </Icon>
             </div>
@@ -102,7 +104,7 @@ export function FilterTags({
         );
       })}
       <WebsiteFilterButton websiteId={websiteId} alignment="center" showText={false} />
-      <Button className={styles.close} variant="quiet" onClick={handleResetFilter}>
+      <Button className="ml-auto font-bold" variant="quiet" onClick={handleResetFilter}>
         <Icon>
           <Icons.Close />
         </Icon>

@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import Empty from '@/components/common/Empty';
 import { formatLongNumber } from '@/lib/format';
 import { useMessages } from '@/components/hooks';
-import styles from './ListTable.module.css';
 import { ReactNode } from 'react';
 
 const ITEM_SIZE = 30;
@@ -57,13 +56,13 @@ export function ListTable({
   };
 
   return (
-    <div className={classNames(styles.table, className)}>
-      <div className={styles.header}>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.metric}>{metric}</div>
+    <div className={classNames('relative flex flex-col overflow-hidden', className)}>
+      <div className="flex items-center justify-between py-2 border-b">
+        <div className="font-semibold">{title}</div>
+        <div className="font-semibold text-center w-24">{metric}</div>
       </div>
-      <div className={styles.body}>
-        {data?.length === 0 && <Empty className={styles.empty} />}
+      <div className="relative overflow-auto">
+        {data?.length === 0 && <Empty className="min-h-[200px]" />}
         {virtualize && data.length > 0 ? (
           <FixedSizeList
             width="100%"
@@ -90,18 +89,19 @@ const AnimatedRow = ({ label, value = 0, percent, change, animate, showPercentag
   });
 
   return (
-    <div className={styles.row}>
-      <div className={styles.label}>{label}</div>
-      <div className={styles.value}>
+    <div className="relative flex items-center justify-between h-8 mb-1 rounded-md hover:bg-gray-200">
+      <div className="flex-2 truncate pl-2">{label}</div>
+      <div className="flex items-center gap-2 text-right font-semibold mr-2">
         {change}
-        <animated.div className={styles.value} title={props?.y as any}>
-          {props.y?.to(formatLongNumber)}
-        </animated.div>
+        <animated.div title={props?.y as any}>{props.y?.to(formatLongNumber)}</animated.div>
       </div>
       {showPercentage && (
-        <div className={styles.percent}>
-          <animated.div className={styles.bar} style={{ width: props.width.to(n => `${n}%`) }} />
-          <animated.span>{props.width.to(n => `${n?.toFixed?.(0)}%`)}</animated.span>
+        <div className="relative w-12 text-gray-600 border-l border-gray-400 pl-2">
+          <animated.div
+            className="absolute top-0 left-0 h-8 bg-blue-500 opacity-10"
+            style={{ width: props.width.to((n) => `${n}%`) }}
+          />
+          <animated.span>{props.width.to((n) => `${n?.toFixed?.(0)}%`)}</animated.span>
         </div>
       )}
     </div>
