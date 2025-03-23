@@ -2,7 +2,7 @@ import { useTransition, animated } from '@react-spring/web';
 import { Button, Icon } from 'react-basics';
 import { useTheme } from '@/components/hooks';
 import Icons from '@/components/icons';
-import styles from './ThemeButton.module.css';
+import classNames from 'classnames';
 
 export function ThemeButton() {
   const { theme, saveTheme } = useTheme();
@@ -25,9 +25,13 @@ export function ThemeButton() {
   }
 
   return (
-    <Button variant="quiet" className={styles.button} onClick={handleClick}>
+    <Button
+      variant="quiet"
+      onClick={handleClick}
+      className="w-[50px] flex justify-center items-center cursor-pointer relative"
+    >
       {transitions((style, item) => (
-        <animated.div key={item} style={style}>
+        <animated.div key={item} style={style} className="absolute flex justify-center items-center">
           <Icon>{item === 'light' ? <Icons.Sun /> : <Icons.Moon />}</Icon>
         </animated.div>
       ))}

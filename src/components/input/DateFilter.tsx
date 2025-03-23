@@ -5,7 +5,6 @@ import DatePickerForm from '@/components/metrics/DatePickerForm';
 import { useLocale, useMessages } from '@/components/hooks';
 import Icons from '@/components/icons';
 import { formatDate, parseDateValue } from '@/lib/date';
-import styles from './DateFilter.module.css';
 import classNames from 'classnames';
 
 export interface DateFilterProps {
@@ -125,7 +124,10 @@ export function DateFilter({
   return (
     <>
       <Dropdown
-        className={classNames(className, styles.dropdown)}
+        className={classNames(
+          'whitespace-nowrap', // Converted `.dropdown span { white-space: nowrap; }`
+          className
+        )}
         items={options}
         renderValue={renderValue}
         value={value}
@@ -162,13 +164,12 @@ const CustomRange = ({ startDate, endDate, unit, onClick }) => {
 
   function handleClick(e) {
     e.stopPropagation();
-
     onClick();
   }
 
   return (
-    <Flexbox gap={10} alignItems="center" wrap="nowrap">
-      <Icon className="mr-2" onClick={handleClick}>
+    <Flexbox gap={2} alignItems="center" wrap="nowrap">
+      <Icon className="mr-2 cursor-pointer" onClick={handleClick}>
         <Icons.Calendar />
       </Icon>
       <Text>

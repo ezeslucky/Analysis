@@ -2,7 +2,7 @@ import { useState, Key } from 'react';
 import { Dropdown, Item } from 'react-basics';
 import { useWebsite, useWebsites, useMessages } from '@/components/hooks';
 import Empty from '@/components/common/Empty';
-import styles from './WebsiteSelect.module.css';
+import classNames from 'classnames';
 
 export function WebsiteSelect({
   websiteId,
@@ -18,29 +18,21 @@ export function WebsiteSelect({
   const [selectedId, setSelectedId] = useState<Key>(websiteId);
 
   const { data: website } = useWebsite(selectedId as string);
-
   const queryResult = useWebsites({ teamId }, { search, pageSize: 5 });
 
-  const renderValue = () => {
-    return website?.name;
-  };
-
-  const renderEmpty = () => {
-    return <Empty message={formatMessage(messages.noResultsFound)} />;
-  };
+  const renderValue = () => website?.name;
+  const renderEmpty = () => <Empty message={formatMessage(messages.noResultsFound)} />;
 
   const handleSelect = (value: any) => {
     setSelectedId(value);
     onSelect?.(value);
   };
 
-  const handleSearch = (value: string) => {
-    setSearch(value);
-  };
+  const handleSearch = (value: string) => setSearch(value);
 
   return (
     <Dropdown
-      menuProps={{ className: styles.dropdown }}
+      menuProps={{ className: 'max-h-[400px] overflow-y-auto' }}
       items={queryResult?.result?.data as any[]}
       value={selectedId as string}
       renderValue={renderValue}

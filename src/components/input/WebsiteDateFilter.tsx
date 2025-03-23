@@ -3,7 +3,7 @@ import { isAfter } from 'date-fns';
 import { getOffsetDateRange } from '@/lib/date';
 import { Button, Icon, Icons } from 'react-basics';
 import DateFilter from './DateFilter';
-import styles from './WebsiteDateFilter.module.css';
+import classNames from 'classnames';
 import { DateRange } from '@/lib/types';
 
 export function WebsiteDateFilter({
@@ -28,9 +28,9 @@ export function WebsiteDateFilter({
   };
 
   return (
-    <div className={styles.container}>
+    <div className="flex items-center gap-2">
       <DateFilter
-        className={styles.dropdown}
+        className="min-w-[200px]"
         value={value}
         startDate={startDate}
         endDate={endDate}
@@ -39,13 +39,20 @@ export function WebsiteDateFilter({
         showAllTime={showAllTime}
       />
       {value !== 'all' && !value.startsWith('range') && (
-        <div className={styles.buttons}>
-          <Button onClick={() => handleIncrement(-1)}>
+        <div className="flex">
+          <Button
+            onClick={() => handleIncrement(-1)}
+            className="rounded-r-none border-r border-base400"
+          >
             <Icon rotate={dir === 'rtl' ? 270 : 90}>
               <Icons.ChevronDown />
             </Icon>
           </Button>
-          <Button onClick={() => handleIncrement(1)} disabled={disableForward}>
+          <Button
+            onClick={() => handleIncrement(1)}
+            disabled={disableForward}
+            className="rounded-l-none"
+          >
             <Icon rotate={dir === 'rtl' ? 90 : 270}>
               <Icons.ChevronDown />
             </Icon>

@@ -1,9 +1,8 @@
 import { Icon, Button, PopupTrigger, Popup } from 'react-basics';
-import classNames from 'classnames';
 import { languages } from '@/lib/lang';
 import { useLocale } from '@/components/hooks';
 import Icons from '@/components/icons';
-import styles from './LanguageButton.module.css';
+import classNames from 'classnames';
 
 export function LanguageButton() {
   const { locale, saveLocale, dir } = useLocale();
@@ -25,17 +24,26 @@ export function LanguageButton() {
       <Popup position="bottom" alignment={dir === 'rtl' ? 'start' : 'end'}>
         {(close: () => void) => {
           return (
-            <div className={styles.menu}>
+            <div
+              className={classNames(
+                'grid grid-cols-3 p-2 bg-gray-100 z-50 rounded-md border border-gray-300 ml-2',
+                'md:grid-cols-2 md:translate-x-10' // Responsive styling
+              )}
+            >
               {items.map(({ value, label }) => {
                 return (
                   <div
                     key={value}
-                    className={classNames(styles.item, { [styles.selected]: value === locale })}
+                    className={classNames(
+                      'flex items-center justify-between min-w-[200px] rounded-md p-2 cursor-pointer',
+                      'hover:bg-gray-300',
+                      { 'font-bold bg-blue-200': value === locale }
+                    )}
                     onClick={(e: any) => handleSelect(value, close, e)}
                   >
                     <span lang={value}>{label}</span>
                     {value === locale && (
-                      <Icon className={styles.icon}>
+                      <Icon className="text-blue-500">
                         <Icons.Check />
                       </Icon>
                     )}
