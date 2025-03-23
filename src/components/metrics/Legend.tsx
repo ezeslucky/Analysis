@@ -2,7 +2,6 @@ import { StatusLight } from 'react-basics';
 import { colord } from 'colord';
 import classNames from 'classnames';
 import { LegendItem } from 'chart.js/auto';
-import styles from './Legend.module.css';
 
 export function Legend({
   items = [],
@@ -16,7 +15,7 @@ export function Legend({
   }
 
   return (
-    <div className={styles.legend}>
+    <div className="flex justify-center flex-wrap py-5">
       {items.map(item => {
         const { text, fillStyle, hidden } = item;
         const color = colord(fillStyle);
@@ -24,7 +23,10 @@ export function Legend({
         return (
           <div
             key={text}
-            className={classNames(styles.label, { [styles.hidden]: hidden })}
+            className={classNames(
+              'flex items-center text-sm cursor-pointer',
+              hidden ? 'text-gray-400' : ''
+            )}
             onClick={() => onClick(item)}
           >
             <StatusLight color={color.alpha(color.alpha() + 0.2).toHex()}>{text}</StatusLight>

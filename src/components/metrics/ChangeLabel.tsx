@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { Icon, Icons } from 'react-basics';
 import { ReactNode } from 'react';
-import styles from './ChangeLabel.module.css';
 
 export function ChangeLabel({
   value,
@@ -26,11 +25,15 @@ export function ChangeLabel({
 
   return (
     <div
-      className={classNames(styles.label, className, {
-        [styles.positive]: good,
-        [styles.negative]: !good,
-        [styles.neutral]: neutral,
-      })}
+      className={classNames(
+        'flex items-center gap-1 text-[13px] font-bold px-2 py-[2px] rounded text-gray-500 self-start',
+        {
+          'text-green-700 bg-green-100': good,
+          'text-red-700 bg-red-100': !good,
+          'text-gray-700 bg-gray-100': neutral,
+        },
+        className,
+      )}
       title={title}
     >
       {!neutral && (
