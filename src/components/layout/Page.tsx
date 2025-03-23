@@ -1,9 +1,9 @@
 'use client';
+
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 import { Banner, Loading } from 'react-basics';
 import { useMessages } from '@/components/hooks';
-import styles from './Page.module.css';
 
 export function Page({
   className,
@@ -26,7 +26,16 @@ export function Page({
     return <Loading position="page" />;
   }
 
-  return <div className={classNames(styles.page, className)}>{children}</div>;
+  return (
+    <div
+      className={classNames(
+        'flex-1 flex flex-col relative w-full max-w-[1320px] mx-auto px-5 min-h-[calc(100vh-60px)] min-h-[calc(100dvh-60px)]',
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default Page;
