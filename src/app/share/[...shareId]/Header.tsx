@@ -13,7 +13,7 @@ export function Header() {
           <Icon size="lg">
             <Icons.Logo />
           </Icon>
-          <Text>Analyzr</Text>
+          <Text>AnalyZr</Text> 
         </Link>
       </div>
       <div className="flex flex-row items-center justify-end md:flex-1">
