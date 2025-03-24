@@ -1,8 +1,8 @@
 {
-  "name": "@analyzr/components",
+  "name": "@umami/components",
   "version": "0.1.0",
-  "description": "Analyzr React components.",
-  "author": "Mike Cao <ezeslucky>",
+  "description": " React components.",
+  "author": "Aurobindo",
   "license": "MIT",
   "type": "module",
   "main": "./index.js",

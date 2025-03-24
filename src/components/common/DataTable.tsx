@@ -5,6 +5,7 @@ import { useMessages, useNavigation } from '@/components/hooks';
 import Empty from '@/components/common/Empty';
 import Pager from '@/components/common/Pager';
 import { PagedQueryResult } from '@/lib/types';
+import styles from './DataTable.module.css';
 import { LoadingPanel } from '@/components/common/LoadingPanel';
 
 const DEFAULT_SEARCH_DELAY = 600;
@@ -54,7 +55,7 @@ export function DataTable({
     <>
       {allowSearch && (hasData || search) && (
         <SearchField
-          className="max-w-[300px] my-5"
+          className={styles.search}
           value={search}
           onSearch={handleSearch}
           delay={searchDelay || DEFAULT_SEARCH_DELAY}
@@ -64,10 +65,9 @@ export function DataTable({
       )}
       <LoadingPanel data={data} isLoading={isLoading} isFetched={isFetched} error={error}>
         <div
-          className={classNames(
-            "flex flex-col relative overflow-x-auto",
-            { "flex items-center justify-center min-h-[200px]": isLoading || noResults || !hasData }
-          )}
+          className={classNames(styles.body, {
+            [styles.status]: isLoading || noResults || !hasData,
+          })}
         >
           {hasData ? (typeof children === 'function' ? children(result) : children) : null}
           {isLoading && <Loading position="page" />}
@@ -76,7 +76,7 @@ export function DataTable({
         </div>
         {allowPaging && hasData && (
           <Pager
-            className="my-5"
+            className={styles.pager}
             page={page}
             pageSize={pageSize}
             count={count}

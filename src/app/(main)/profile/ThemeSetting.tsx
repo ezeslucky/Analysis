@@ -1,17 +1,17 @@
-/* eslint-disable prettier/prettier */
 import classNames from 'classnames';
 import { Button, Icon } from 'react-basics';
 import { useTheme } from '@/components/hooks';
 import Sun from '@/assets/sun.svg';
 import Moon from '@/assets/moon.svg';
+import styles from './ThemeSetting.module.css';
 
 export function ThemeSetting() {
   const { theme, saveTheme } = useTheme();
 
   return (
-    <div className="flex gap-2">
+    <div className={styles.buttons}>
       <Button
-        className={classNames({ ["border-2 border-primary-400"]: theme === 'light' })}
+        className={classNames({ [styles.active]: theme === 'light' })}
         onClick={() => saveTheme('light')}
       >
         <Icon>
@@ -19,7 +19,7 @@ export function ThemeSetting() {
         </Icon>
       </Button>
       <Button
-        className={classNames({ ["border-2 border-primary-400 "]: theme === 'dark' })}
+        className={classNames({ [styles.active]: theme === 'dark' })}
         onClick={() => saveTheme('dark')}
       >
         <Icon>

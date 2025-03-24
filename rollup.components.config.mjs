@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import path from 'path';
 import crypto from 'crypto';
 import resolve from '@rollup/plugin-node-resolve';

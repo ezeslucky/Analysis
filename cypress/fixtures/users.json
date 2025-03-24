@@ -1,0 +1,17 @@
+{
+  "userGet": {
+    "name": "cypress",
+    "email": "password",
+    "role": "User"
+  },
+  "userPost": {
+    "username": "cypress1",
+    "password": "password",
+    "role": "User"
+  },
+  "userDelete": {
+    "name": "Aurobindo",
+    "email": "aurobindolife888@gmail.com",
+    "age": 21
+  }
+}

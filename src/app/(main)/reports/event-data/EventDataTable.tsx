@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useContext } from 'react';
 import { GridTable, GridColumn } from 'react-basics';
 import { useMessages } from '@/components/hooks';

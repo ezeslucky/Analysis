@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 require('dotenv').config();
 const cli = require('next/dist/cli/next-start');
 

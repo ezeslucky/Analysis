@@ -1,10 +1,9 @@
-/* eslint-disable prettier/prettier */
 export type TrackedProperties = {
   /**
    * Hostname of server
    *
    * @description extracted from `window.location.hostname`
-   * @example 'analytics.analyzr.is'
+   * @example 'analytics.umami.is'
    */
   hostname: string;
 
@@ -20,7 +19,7 @@ export type TrackedProperties = {
    * Page referrer
    *
    * @description extracted from `window.navigator.language`
-   * @example 'https://analytics.analyzr.is/docs/getting-started'
+   * @example 'https://analytics.umami.is/docs/getting-started'
    */
   referrer: string;
 
@@ -36,7 +35,7 @@ export type TrackedProperties = {
    * Page title
    *
    * @description extracted from `document.querySelector('head > title')`
-   * @example 'analyzr'
+   * @example 'umami'
    */
   title: string;
 

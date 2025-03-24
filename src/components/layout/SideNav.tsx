@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { Menu, Item } from 'react-basics';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import styles from './SideNav.module.css';
 
 export interface SideNavProps {
   selectedKey: string;
@@ -21,18 +22,19 @@ export function SideNav({
   onSelect = () => {},
 }: SideNavProps) {
   const pathname = usePathname();
-  
   return (
-    <Menu items={items} selectedKey={selectedKey} className={classNames('flex flex-col gap-1', className)} onSelect={onSelect}>
+    <Menu
+      items={items}
+      selectedKey={selectedKey}
+      className={classNames(styles.menu, className)}
+      onSelect={onSelect}
+    >
       {({ key, label, url }) => (
         <Item
           key={key}
-          className={classNames(
-            'p-0 rounded-md',
-            { 'font-bold': pathname.startsWith(url) }
-          )}
+          className={classNames(styles.item, { [styles.selected]: pathname.startsWith(url) })}
         >
-          <Link href={url} shallow={shallow} scroll={scroll} className="flex-1 px-4 py-2 text-gray-800 hover:bg-gray-200">
+          <Link href={url} shallow={shallow} scroll={scroll}>
             {label}
           </Link>
         </Item>

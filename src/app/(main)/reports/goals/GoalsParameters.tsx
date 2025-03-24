@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useMessages } from '@/components/hooks';
 import Icons from '@/components/icons';
 import { formatNumber } from '@/lib/format';
@@ -19,6 +18,7 @@ import ParameterList from '../[reportId]/ParameterList';
 import PopupForm from '../[reportId]/PopupForm';
 import { ReportContext } from '../[reportId]/Report';
 import GoalsAddForm from './GoalsAddForm';
+import styles from './GoalsParameters.module.css';
 
 export function GoalsParameters() {
   const { report, runReport, updateReport, isRunning } = useContext(ReportContext);
@@ -98,13 +98,13 @@ export function GoalsParameters() {
                     onRemove={() => handleRemoveGoals(index)}
                   >
                     <Flexbox direction="column" gap={5}>
-                      <div className="w-full mb-2 font-semibold">{goal.value}</div>
+                      <div className={styles.value}>{goal.value}</div>
                       {goal.type === 'event-data' && (
-                        <div className="text-orange900 bg-orange100 text-[12px] font-black px-2 py-1 rounded-md w-fit">
+                        <div className={styles.eventData}>
                           {formatMessage(labels[goal.operator])}: {goal.property}
                         </div>
                       )}
-                      <div className="text-blue900 bg-blue100 text-[12px] font-black px-2 py-1 rounded-md w-fit">
+                      <div className={styles.goal}>
                         {formatMessage(labels.goal)}: {formatNumber(goal.goal)}
                       </div>
                     </Flexbox>

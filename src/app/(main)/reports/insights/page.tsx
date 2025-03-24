@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import InsightsReportPage from './InsightsReportPage';
 import { Metadata } from 'next';
 

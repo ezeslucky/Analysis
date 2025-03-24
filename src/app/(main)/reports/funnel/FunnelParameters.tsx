@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useContext } from 'react';
 import { useMessages } from '@/components/hooks';
 import {
@@ -19,6 +18,7 @@ import { ReportContext } from '../[reportId]/Report';
 import BaseParameters from '../[reportId]/BaseParameters';
 import ParameterList from '../[reportId]/ParameterList';
 import PopupForm from '../[reportId]/PopupForm';
+import styles from './FunnelParameters.module.css';
 
 export function FunnelParameters() {
   const { report, runReport, updateReport, isRunning } = useContext(ReportContext);
@@ -92,11 +92,11 @@ export function FunnelParameters() {
             return (
               <PopupTrigger key={index}>
                 <ParameterList.Item
-                  className="flex items-center gap-2 w-full"
+                  className={styles.item}
                   icon={step.type === 'url' ? <Icons.Eye /> : <Icons.Bolt />}
                   onRemove={() => handleRemoveStep(index)}
                 >
-                  <div className="flex self-center gap-5">
+                  <div className={styles.value}>
                     <div>{step.value}</div>
                   </div>
                 </ParameterList.Item>

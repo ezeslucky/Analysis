@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Button, Icon, Text, useToasts, ModalTrigger, Modal } from 'react-basics';
 import PasswordEditForm from '@/app/(main)/profile/PasswordEditForm';
 import Icons from '@/components/icons';

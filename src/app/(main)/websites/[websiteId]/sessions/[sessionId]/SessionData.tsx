@@ -2,6 +2,7 @@ import { TextOverflow } from 'react-basics';
 import { useMessages, useSessionData } from '@/components/hooks';
 import Empty from '@/components/common/Empty';
 import { DATA_TYPES } from '@/lib/constants';
+import styles from './SessionData.module.css';
 import { LoadingPanel } from '@/components/common/LoadingPanel';
 
 export function SessionData({ websiteId, sessionId }: { websiteId: string; sessionId: string }) {
@@ -10,21 +11,19 @@ export function SessionData({ websiteId, sessionId }: { websiteId: string; sessi
 
   return (
     <>
-      <div className="font-bold mb-5">{formatMessage(labels.properties)}</div>
-      <LoadingPanel className="flex flex-col gap-5 relative" {...query} data={data}>
-        {!data?.length && <Empty className="text-font-color300 text-center" />}
+      <div className={styles.header}>{formatMessage(labels.properties)}</div>
+      <LoadingPanel className={styles.data} {...query} data={data}>
+        {!data?.length && <Empty className={styles.empty} />}
         {data?.map(({ dataKey, dataType, stringValue }) => {
           return (
             <div key={dataKey}>
-              <div className="flex items-center justify-between">
-                <div className="text-font-color200 font-bold">
+              <div className={styles.label}>
+                <div className={styles.name}>
                   <TextOverflow>{dataKey}</TextOverflow>
                 </div>
-                <div className="text-[11px] px-1.5 py-0 border border-base400 rounded-md">
-                  {DATA_TYPES[dataType]}
-                </div>
+                <div className={styles.type}>{DATA_TYPES[dataType]}</div>
               </div>
-              <div className="my-1.5">{stringValue}</div>
+              <div className={styles.value}>{stringValue}</div>
             </div>
           );
         })}

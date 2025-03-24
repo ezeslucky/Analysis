@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Icons from '@/components/icons';
 import { useMessages, useLogin, useLocale } from '@/components/hooks';
 import { CURRENT_VERSION } from '@/lib/constants';
-import classNames from 'classnames';
+import styles from './ProfileButton.module.css';
 
 export function ProfileButton() {
   const { formatMessage, labels } = useMessages();
@@ -32,30 +32,23 @@ export function ProfileButton() {
       </Button>
       <Popup position="bottom" alignment={dir === 'rtl' ? 'start' : 'end'}>
         {(close: () => void) => (
-          <Menu
-            onSelect={key => handleSelect(key, close)}
-            className="w-[200px] z-[var(--z-index-popup)] border border-gray-300 rounded-md overflow-hidden bg-gray-100"
-          >
-            <Text className="text-gray-700 bg-gray-200 py-2 px-4">{user.username}</Text>
-            <Item key="profile" className="flex gap-3 bg-gray-100 hover:bg-gray-200 p-2" divider>
+          <Menu onSelect={key => handleSelect(key, close)} className={styles.menu}>
+            <Text className={styles.name}>{user.username}</Text>
+            <Item key="profile" className={styles.item} divider={true}>
               <Icon>
                 <Icons.User />
               </Icon>
               <Text>{formatMessage(labels.profile)}</Text>
             </Item>
             {!cloudMode && (
-              <Item
-                data-test="item-logout"
-                key="logout"
-                className="flex gap-3 bg-gray-100 hover:bg-gray-200 p-2"
-              >
+              <Item data-test="item-logout" key="logout" className={styles.item}>
                 <Icon>
                   <Icons.Logout />
                 </Icon>
                 <Text>{formatMessage(labels.logout)}</Text>
               </Item>
             )}
-            <div className="text-[11px] font-mono text-gray-500 text-right mr-3">{`v${CURRENT_VERSION}`}</div>
+            <div className={styles.version}>{`v${CURRENT_VERSION}`}</div>
           </Menu>
         )}
       </Popup>

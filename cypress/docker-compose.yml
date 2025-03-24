@@ -1,0 +1,52 @@
+---
+version: '3'
+services:
+  analyzr:
+    build: ../
+    
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: postgresql://analyzr:analyzr@db:5432/analyzr
+      DATABASE_TYPE: postgresql
+      APP_SECRET: replace-me-with-a-random-string
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: ['CMD-SHELL', 'curl http://localhost:3000/api/heartbeat']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: analyzr
+      POSTGRES_USER: analyzr
+      POSTGRES_PASSWORD: analyzr
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  cypress:
+    image: 'cypress/included:13.6.0'
+    depends_on:
+      - analyzr
+      - db
+    environment:
+      - CYPRESS_baseUrl=http://analyzr:3000
+      - CYPRESS_analyzr_user=ezeslucky
+      - CYPRESS_analyzr_password=ezeslucky
+    volumes:
+      - ./tsconfig.json:/tsconfig.json
+      - ../cypress.config.ts:/cypress.config.ts
+      - ./:/cypress
+      - ../node_modules/:/node_modules
+      - ../src/lib/crypto.ts:/src/lib/crypto.ts
+volumes:
+  postgres_data:

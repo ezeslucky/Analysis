@@ -3,6 +3,7 @@ import TimezoneSetting from '@/app/(main)/profile/TimezoneSetting';
 import DateRangeSetting from '@/app/(main)/profile/DateRangeSetting';
 import Icons from '@/components/icons';
 import { useMessages } from '@/components/hooks';
+import styles from './SettingsButton.module.css';
 
 export function SettingsButton() {
   const { formatMessage, labels } = useMessages();
@@ -14,11 +15,7 @@ export function SettingsButton() {
           <Icons.Gear />
         </Icon>
       </Button>
-      <Popup
-        className="bg-gray-100 border border-gray-400 rounded-md flex flex-col absolute top-full right-0 p-5"
-        position="bottom"
-        alignment="end"
-      >
+      <Popup className={styles.popup} position="bottom" alignment="end">
         <Form>
           <FormRow label={formatMessage(labels.timezone)}>
             <TimezoneSetting />

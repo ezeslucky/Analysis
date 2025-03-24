@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Button } from 'react-basics';
 import Link from 'next/link';
 import Script from 'next/script';
@@ -8,7 +7,7 @@ import PageHeader from '@/components/layout/PageHeader';
 import EventsChart from '@/components/metrics/EventsChart';
 import WebsiteChart from '../websites/[websiteId]/WebsiteChart';
 import { useApi, useNavigation } from '@/components/hooks';
-
+import styles from './TestConsole.module.css';
 
 export function TestConsole({ websiteId }: { websiteId: string }) {
   const { get, useQuery } = useApi();
@@ -122,16 +121,16 @@ export function TestConsole({ websiteId }: { websiteId: string }) {
         <WebsiteSelect websiteId={website?.id} onSelect={handleChange} />
       </PageHeader>
       {website && (
-        <div className=" grid  gap-[30px] pb-10">
+        <div className={styles.container}>
           <Script
             async
             data-website-id={websiteId}
             src={`${process.env.basePath || ''}/script.js`}
             data-cache="true"
           />
-          <div className="border border-[var(--base400)] rounded-md p-5 grid gap-10 grid-cols-3 min-w-[300px] shadow-[0_0_0_10px_var(--base100)]">
-            <div className="flex flex-col gap-2.5">
-              <div className="text-base font-bold my-5">Page links</div>
+          <div className={styles.actions}>
+            <div className={styles.group}>
+              <div className={styles.header}>Page links</div>
               <div>
                 <Link href={`/console/${websiteId}/page/1/?q=abc`}>page one</Link>
               </div>
@@ -139,14 +138,14 @@ export function TestConsole({ websiteId }: { websiteId: string }) {
                 <Link href={`/console/${websiteId}/page/2/?q=123 `}>page two</Link>
               </div>
               <div>
-                <a href="https://www.google.com" data-analyzr-event="external-link-direct">
+                <a href="https://www.google.com" data-umami-event="external-link-direct">
                   external link (direct)
                 </a>
               </div>
               <div>
                 <a
                   href="https://www.google.com"
-                  data-analyzr-event="external-link-tab"
+                  data-umami-event="external-link-tab"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -154,51 +153,51 @@ export function TestConsole({ websiteId }: { websiteId: string }) {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col gap-2.5">
-              <div className="text-base font-bold my-5">Click events</div>
-              <Button id="send-event-button" data-analyzr-event="button-click" variant="primary">
+            <div className={styles.group}>
+              <div className={styles.header}>Click events</div>
+              <Button id="send-event-button" data-umami-event="button-click" variant="primary">
                 Send event
               </Button>
               <Button
                 id="send-event-data-button"
-                data-analyzr-event="button-click"
-                data-analyzr-event-name="bob"
-                data-analyzr-event-id="123"
+                data-umami-event="button-click"
+                data-umami-event-name="bob"
+                data-umami-event-id="123"
                 variant="primary"
               >
                 Send event with data
               </Button>
               <Button
                 id="generate-revenue-button"
-                data-analyzr-event="checkout-cart"
-                data-analyzr-event-revenue={(Math.random() * 10000).toFixed(2).toString()}
-                data-analyzr-event-currency="USD"
+                data-umami-event="checkout-cart"
+                data-umami-event-revenue={(Math.random() * 10000).toFixed(2).toString()}
+                data-umami-event-currency="USD"
                 variant="primary"
               >
                 Generate revenue data
               </Button>
               <Button
                 id="button-with-div-button"
-                data-analyzr-event="button-click"
-                data-analyzr-event-name={'bob'}
-                data-analyzr-event-id="123"
+                data-umami-event="button-click"
+                data-umami-event-name={'bob'}
+                data-umami-event-id="123"
                 variant="primary"
               >
-                <div className="border border-blue-900 rounded-md px-4 py-2">Button with div</div>
+                <div className={styles.wrapped}>Button with div</div>
               </Button>
-              <div data-analyzr-event="div-click" className="border border-blue-900 rounded-md px-4 py-2">
+              <div data-umami-event="div-click" className={styles.wrapped}>
                 DIV with attribute
               </div>
-              <div data-analyzr-event="div-click-one" className="border border-blue-900 rounded-md px-4 py-2">
-                <div data-analyzr-event="div-click-two" className="border border-blue-900 rounded-md px-4 py-2">
-                  <div data-analyzr-event="div-click-three" className="border border-blue-900 rounded-md px-4 py-2">
+              <div data-umami-event="div-click-one" className={styles.wrapped}>
+                <div data-umami-event="div-click-two" className={styles.wrapped}>
+                  <div data-umami-event="div-click-three" className={styles.wrapped}>
                     Nested DIV
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-2.5">
-              <div className="text-base font-bold my-5">Javascript events</div>
+            <div className={styles.group}>
+              <div className={styles.header}>Javascript events</div>
               <Button id="manual-button" variant="primary" onClick={handleRunScript}>
                 Run script
               </Button>

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 require('dotenv').config();
 const { sendTelemetry } = require('./telemetry');
 

@@ -3,6 +3,7 @@ import { useMessages, useNavigation } from '@/components/hooks';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import { Icon, Icons } from 'react-basics';
+import styles from './FilterLink.module.css';
 
 export interface FilterLinkProps {
   id: string;
@@ -28,23 +29,21 @@ export function FilterLink({
 
   return (
     <div
-      className={classNames(
-        "flex items-center gap-2",
-        active && !selected ? "text-[var(--base500)]" : "",
-        active && selected ? "text-[var(--base900)] font-semibold" : "",
-        className
-      )}
+      className={classNames(styles.row, className, {
+        [styles.inactive]: active && !selected,
+        [styles.active]: active && selected,
+      })}
     >
       {children}
       {!value && `(${label || formatMessage(labels.unknown)})`}
       {value && (
-        <Link href={renderUrl({ [id]: value })} className="whitespace-nowrap overflow-hidden text-ellipsis">
+        <Link href={renderUrl({ [id]: value })} className={styles.label} replace>
           {label || value}
         </Link>
       )}
       {externalUrl && (
-        <a className="hidden ms-5 group-hover:block" href={externalUrl} target="_blank" rel="noreferrer noopener">
-          <Icon className="cursor-pointer">
+        <a className={styles.link} href={externalUrl} target="_blank" rel="noreferrer noopener">
+          <Icon className={styles.icon}>
             <Icons.External />
           </Icon>
         </a>

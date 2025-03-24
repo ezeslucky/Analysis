@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { create } from 'zustand';
 import { DASHBOARD_CONFIG, DEFAULT_WEBSITE_LIMIT } from '@/lib/constants';
 import { getItem, setItem } from '@/lib/storage';

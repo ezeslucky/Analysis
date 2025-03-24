@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useContext } from 'react';
 import { FormRow } from 'react-basics';
 import { parseDateRange } from '@/lib/date';
@@ -6,7 +5,7 @@ import DateFilter from '@/components/input/DateFilter';
 import WebsiteSelect from '@/components/input/WebsiteSelect';
 import { useMessages, useTeamUrl, useWebsite } from '@/components/hooks';
 import { ReportContext } from './Report';
-
+import styles from './BaseParameters.module.css';
 
 export interface BaseParametersProps {
   showWebsiteSelect?: boolean;
@@ -50,7 +49,7 @@ export function BaseParameters({
         </FormRow>
       )}
       {showDateSelect && (
-        <FormRow label={formatMessage(labels.dateRange)} className="max-h-[300px]">
+        <FormRow label={formatMessage(labels.dateRange)} className={styles.dropdown}>
           {allowDateSelect && (
             <DateFilter
               value={value}

@@ -4,6 +4,7 @@ import { LoadingPanel } from '@/components/common/LoadingPanel';
 import PieChart from '@/components/charts/PieChart';
 import { useState } from 'react';
 import { CHART_COLORS } from '@/lib/constants';
+import styles from './EventProperties.module.css';
 
 export function EventProperties({ websiteId }: { websiteId: string }) {
   const [propertyName, setPropertyName] = useState('');
@@ -32,18 +33,18 @@ export function EventProperties({ websiteId }: { websiteId: string }) {
 
   return (
     <LoadingPanel isLoading={isLoading} isFetched={isFetched} data={data} error={error}>
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-15 mb-10">
-        <GridTable data={data} cardMode={false} className="self-start">
+      <div className={styles.container}>
+        <GridTable data={data} cardMode={false} className={styles.table}>
           <GridColumn name="eventName" label={formatMessage(labels.name)}>
             {row => (
-              <div className="cursor-pointer text-primary400" onClick={() => handleRowClick(row)}>
+              <div className={styles.link} onClick={() => handleRowClick(row)}>
                 {row.eventName}
               </div>
             )}
           </GridColumn>
           <GridColumn name="propertyName" label={formatMessage(labels.property)}>
             {row => (
-              <div className="cursor-pointer text-primary400" onClick={() => handleRowClick(row)}>
+              <div className={styles.link} onClick={() => handleRowClick(row)}>
                 {row.propertyName}
               </div>
             )}
@@ -51,8 +52,8 @@ export function EventProperties({ websiteId }: { websiteId: string }) {
           <GridColumn name="total" label={formatMessage(labels.count)} alignment="end" />
         </GridTable>
         {propertyName && (
-          <div className="min-h-[620px]">
-            <div className="text-center font-bold my-5">{propertyName}</div>
+          <div className={styles.chart}>
+            <div className={styles.title}>{propertyName}</div>
             <PieChart key={propertyName + eventName} type="doughnut" data={chartData} />
           </div>
         )}

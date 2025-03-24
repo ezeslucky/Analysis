@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import GoalsChart from './GoalsChart';
 import GoalsParameters from './GoalsParameters';
 import Report from '../[reportId]/Report';
@@ -18,9 +17,7 @@ export default function GoalsReport({ reportId }: { reportId?: string }) {
     <Report reportId={reportId} defaultParameters={defaultParameters}>
       <ReportHeader icon={<Target />} />
       <ReportMenu>
-        <div className="flex flex-col justify-between border border-base400 rounded-[var(--border-radius)] leading-8 p-2.5 overflow-hidden">
-          <GoalsParameters />
-        </div>
+        <GoalsParameters />
       </ReportMenu>
       <ReportBody>
         <GoalsChart />

@@ -14,6 +14,7 @@ import {
 } from '@/components/hooks';
 import Icons from '@/components/icons';
 import ListTable, { ListTableProps } from './ListTable';
+import styles from './MetricsTable.module.css';
 
 export interface MetricsTableProps extends ListTableProps {
   websiteId: string;
@@ -91,12 +92,12 @@ export function MetricsTable({
   }, [data, dataFilter, search, limit, formatValue, type]);
 
   return (
-    <div className={classNames('relative flex flex-col flex-1 min-h-[430px]', className)}>
+    <div className={classNames(styles.container, className)}>
       {error && <ErrorMessage />}
-      <div className="flex items-center justify-between gap-5 mb-2.5 flex-wrap">
+      <div className={styles.actions}>
         {allowSearch && (
           <SearchField
-            className="max-w-[300px] md:max-w-full"
+            className={styles.search}
             value={search}
             onSearch={setSearch}
             delay={300}
@@ -109,7 +110,7 @@ export function MetricsTable({
         <ListTable {...(props as ListTableProps)} data={filteredData} className={className} />
       )}
       {!data && isLoading && !isFetched && <Loading icon="dots" />}
-      <div className="flex justify-center">
+      <div className={styles.footer}>
         {showMore && data && !error && limit && (
           <LinkButton href={renderUrl({ view: type })} variant="quiet">
             <Text>{formatMessage(labels.more)}</Text>

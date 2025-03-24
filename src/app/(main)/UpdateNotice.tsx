@@ -6,6 +6,7 @@ import useStore, { checkVersion } from '@/store/version';
 import { REPO_URL, VERSION_CHECK } from '@/lib/constants';
 import { useMessages } from '@/components/hooks';
 import { usePathname } from 'next/navigation';
+import styles from './UpdateNotice.module.css';
 
 export function UpdateNotice({ user, config }) {
   const { formatMessage, labels, messages } = useMessages();
@@ -47,11 +48,11 @@ export function UpdateNotice({ user, config }) {
   }
 
   return createPortal(
-    <div className="absolute flex justify-between w-full max-w-[800px] gap-5 my-[60px] self-center bg-base50 p-5 border border-base300 rounded-[var(--border-radius)] z-[9999] shadow-lg">
-      <div className="flex justify-center items-center text-font-color100 font-bold md:h-[80px]">
+    <div className={styles.notice}>
+      <div className={styles.message}>
         {formatMessage(messages.newVersionAvailable, { version: `v${latest}` })}
       </div>
-      <div className="flex flex-row justify-end gap-2.5 flex-0">
+      <div className={styles.buttons}>
         <Button variant="primary" onClick={handleViewClick}>
           {formatMessage(labels.viewDetails)}
         </Button>

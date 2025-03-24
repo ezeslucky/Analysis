@@ -28,7 +28,7 @@ export function EventsChart({ websiteId, className }: EventsChartProps) {
       obj[x].push({ x: t, y });
 
       return obj;
-    }, {} as Record<string, { x: string; y: number }[]>);
+    }, {});
 
     return {
       datasets: Object.keys(map).map((key, index) => {
@@ -46,18 +46,17 @@ export function EventsChart({ websiteId, className }: EventsChartProps) {
   }, [data, startDate, endDate, unit]);
 
   return (
-    <div className={`flex ${className}`}>
-      <BarChart
-        minDate={startDate.toISOString()}
-        maxDate={endDate.toISOString()}
-        data={chartData}
-        unit={unit}
-        stacked={true}
-        renderXLabel={renderDateLabels(unit, locale)}
-        isLoading={isLoading}
-        isAllTime={value === 'all'}
-      />
-    </div>
+    <BarChart
+      minDate={startDate.toISOString()}
+      maxDate={endDate.toISOString()}
+      className={className}
+      data={chartData}
+      unit={unit}
+      stacked={true}
+      renderXLabel={renderDateLabels(unit, locale)}
+      isLoading={isLoading}
+      isAllTime={value === 'all'}
+    />
   );
 }
 

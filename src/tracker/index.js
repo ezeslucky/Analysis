@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 (window => {
   const {
     screen: { width, height },
@@ -189,7 +188,7 @@
   const trackingDisabled = () =>
     disabled ||
     !website ||
-    (localStorage && localStorage.getItem('umami.disabled')) ||
+    (localStorage && localStorage.getItem('analyzr.disabled')) ||
     (domain && !domains.includes(hostname)) ||
     (dnt && hasDoNotTrack());
 
@@ -201,7 +200,7 @@
     };
 
     if (typeof cache !== 'undefined') {
-      headers['x-umami-cache'] = cache;
+      headers['x-analyzr-cache'] = cache;
     }
 
     try {
@@ -252,8 +251,8 @@
 
   /* Start */
 
-  if (!window.umami) {
-    window.umami = {
+  if (!window.analyzr) {
+    window.analyzr = {
       track,
       identify,
     };

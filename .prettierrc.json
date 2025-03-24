@@ -4,6 +4,5 @@
   "printWidth": 100,
   "singleQuote": true,
   "trailingComma": "all",
-  "prettier/prettier": "error"
-
+  "prettier/prettier": "off"
 }

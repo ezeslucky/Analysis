@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import FunnelReportPage from './FunnelReportPage';
 import { Metadata } from 'next';
 

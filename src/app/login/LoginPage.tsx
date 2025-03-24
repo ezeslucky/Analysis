@@ -1,5 +1,6 @@
 'use client';
 import LoginForm from './LoginForm';
+import styles from './LoginPage.module.css';
 
 export function LoginPage() {
   if (process.env.disableLogin) {
@@ -7,7 +8,7 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen bg-base75">
+    <div className={styles.page}>
       <LoginForm />
     </div>
   );

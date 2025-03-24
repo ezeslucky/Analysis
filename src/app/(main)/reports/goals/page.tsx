@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import GoalsReportPage from './GoalsReportPage';
 import { Metadata } from 'next';
 

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useMemo, useState } from 'react';
 import { useFilters, useFormat, useMessages, useWebsiteValues } from '@/components/hooks';
 import { OPERATORS } from '@/lib/constants';
@@ -18,7 +17,7 @@ import {
   Text,
   TextField,
 } from 'react-basics';
-
+import styles from './FieldFilterEditForm.module.css';
 
 export interface FieldFilterFormProps {
   websiteId?: string;
@@ -135,11 +134,11 @@ export default function FieldFilterEditForm({
 
   return (
     <Form>
-      <FormRow label={label} className="flex flex-col gap-5" >
+      <FormRow label={label} className={styles.filter}>
         <Flexbox gap={10}>
           {allowFilterSelect && (
             <Dropdown
-              className="min-w-[200px]"
+              className={styles.dropdown}
               items={filterDropdownItems(name)}
               value={operator}
               renderValue={renderFilterValue}
@@ -151,7 +150,7 @@ export default function FieldFilterEditForm({
             </Dropdown>
           )}
           {selected && isEquals && (
-            <div className="flex items-center justify-between px-4 py-2 min-w-[200px] font-black bg-base100 rounded-[var(--border-radius)] cursor-pointer whitespace-nowrap" onClick={handleReset}>
+            <div className={styles.selected} onClick={handleReset}>
               <Text>{formatValue(selected, name)}</Text>
               <Icon>
                 <Icons.Close />
@@ -159,9 +158,9 @@ export default function FieldFilterEditForm({
             </div>
           )}
           {!selected && isEquals && (
-            <div className=" relative">
+            <div className={styles.search}>
               <SearchField
-                className="min-w-[200px]"
+                className={styles.text}
                 value={value}
                 placeholder={formatMessage(labels.enter)}
                 onChange={e => setValue(e.target.value)}
@@ -182,7 +181,7 @@ export default function FieldFilterEditForm({
           )}
           {!selected && !isEquals && (
             <TextField
-              className="min-w-[200px]"
+              className={styles.text}
               value={value}
               onChange={e => setValue(e.target.value)}
             />
@@ -200,7 +199,7 @@ const ResultsMenu = ({ values, type, isLoading, onSelect }) => {
   const { formatValue } = useFormat();
   if (isLoading) {
     return (
-      <Menu className="absolute max-w-[300px] max-h-[210px]" variant="popup">
+      <Menu className={styles.menu} variant="popup">
         <Item>
           <Loading icon="dots" position="center" />
         </Item>
@@ -213,7 +212,7 @@ const ResultsMenu = ({ values, type, isLoading, onSelect }) => {
   }
 
   return (
-    <Menu className="absolute max-w-[300px] max-h-[210px]" variant="popup" onSelect={onSelect}>
+    <Menu className={styles.menu} variant="popup" onSelect={onSelect}>
       {values?.map(({ value }) => {
         return <Item key={value}>{formatValue(value, type)}</Item>;
       })}

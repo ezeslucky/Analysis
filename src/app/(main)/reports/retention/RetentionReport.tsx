@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import RetentionTable from './RetentionTable';
 import RetentionParameters from './RetentionParameters';
 import Report from '../[reportId]/Report';
@@ -24,9 +23,7 @@ export default function RetentionReport({ reportId }: { reportId?: string }) {
     <Report reportId={reportId} defaultParameters={defaultParameters}>
       <ReportHeader icon={<Magnet />} />
       <ReportMenu>
-        <div className="flex flex-col justify-between border border-base400 rounded-[var(--border-radius)] leading-[32px] p-2.5 overflow-hidden">
-          <RetentionParameters />
-        </div>
+        <RetentionParameters />
       </ReportMenu>
       <ReportBody>
         <RetentionTable />

@@ -4,6 +4,7 @@ import { useShareToken } from '@/components/hooks';
 import Page from '@/components/layout/Page';
 import Header from './Header';
 import Footer from './Footer';
+import styles from './SharePage.module.css';
 import { WebsiteProvider } from '@/app/(main)/websites/[websiteId]/WebsiteProvider';
 
 export default function SharePage({ shareId }) {
@@ -14,7 +15,7 @@ export default function SharePage({ shareId }) {
   }
 
   return (
-    <div className="flex-1 min-h-[calc(100vh-200px)] min-h-[calc(100dvh-200px)]">
+    <div className={styles.container}>
       <Page>
         <Header />
         <WebsiteProvider websiteId={shareToken.websiteId}>

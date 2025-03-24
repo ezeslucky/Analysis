@@ -8,8 +8,8 @@ export const THEME_CONFIG = 'analyzr.theme';
 export const DASHBOARD_CONFIG = 'analyzr.dashboard';
 export const VERSION_CHECK = 'analyzr.version-check';
 export const SHARE_TOKEN_HEADER = 'x-analyzr-share-token';
-export const HOMEPAGE_URL = '/';
-export const REPO_URL = 'https://github.com/ezeslucky/Analyzr.git';
+export const HOMEPAGE_URL = '';
+export const REPO_URL = 'https://github.com/ezeslycky/Analyzr';
 export const UPDATES_URL = 'https://api.analyzr.is/v1/updates';
 export const TELEMETRY_PIXEL = 'https://i.analyzr.is/a.png';
 

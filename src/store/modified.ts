@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { create } from 'zustand';
 
 const store = create(() => ({}));

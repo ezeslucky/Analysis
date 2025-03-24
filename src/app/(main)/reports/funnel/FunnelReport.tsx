@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import FunnelChart from './FunnelChart';
 import FunnelParameters from './FunnelParameters';
 import Report from '../[reportId]/Report';
@@ -18,9 +17,7 @@ export default function FunnelReport({ reportId }: { reportId?: string }) {
     <Report reportId={reportId} defaultParameters={defaultParameters}>
       <ReportHeader icon={<Funnel />} />
       <ReportMenu>
-        <div className="flex flex-col justify-between border border-base400 rounded-[var(--border-radius)] leading-8 p-2.5 overflow-hidden">
-          <FunnelParameters />
-        </div>
+        <FunnelParameters />
       </ReportMenu>
       <ReportBody>
         <FunnelChart />

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-console */
 require('dotenv').config();

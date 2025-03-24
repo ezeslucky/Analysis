@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Prisma, Team } from '@prisma/client';
 import { ROLES } from '@/lib/constants';
 import { uuid } from '@/lib/crypto';

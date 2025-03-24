@@ -1,10 +1,10 @@
-/* eslint-disable prettier/prettier */
 import { useContext } from 'react';
 import { firstBy } from 'thenby';
 import { ReportContext } from '../[reportId]/Report';
 import { CHART_COLORS, UTM_PARAMS } from '@/lib/constants';
 import PieChart from '@/components/charts/PieChart';
 import ListTable from '@/components/metrics/ListTable';
+import styles from './UTMView.module.css';
 import { useMessages } from '@/components/hooks';
 
 function toArray(data: { [key: string]: number } = {}) {
@@ -38,12 +38,14 @@ export default function UTMView() {
             },
           ],
         };
-        const total = items.reduce((sum, { value }) => +sum + +value, 0);
+        const total = items.reduce((sum, { value }) => {
+          return +sum + +value;
+        }, 0);
 
         return (
-          <div key={param} className="grid grid-cols-2 gap-5 border-b border-base300 pb-7.5 mb-7.5">
+          <div key={param} className={styles.row}>
             <div>
-              <div className="text-[24px] leading-[36px] font-bold">{param.replace(/^utm_/, '')}</div>
+              <div className={styles.title}>{param.replace(/^utm_/, '')}</div>
               <ListTable
                 metric={formatMessage(labels.views)}
                 data={items.map(({ name, value }) => ({
