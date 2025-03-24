@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const os = require('os');
 const isCI = require('is-ci');
 const pkg = require('../package.json');
