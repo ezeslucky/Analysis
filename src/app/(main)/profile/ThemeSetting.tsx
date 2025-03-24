@@ -4,7 +4,6 @@ import { Button, Icon } from 'react-basics';
 import { useTheme } from '@/components/hooks';
 import Sun from '@/assets/sun.svg';
 import Moon from '@/assets/moon.svg';
-import styles from './ThemeSetting.module.css';
 
 export function ThemeSetting() {
   const { theme, saveTheme } = useTheme();
