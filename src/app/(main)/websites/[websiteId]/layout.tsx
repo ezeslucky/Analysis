@@ -16,6 +16,6 @@ export default async function ({
 export const metadata: Metadata = {
   title: {
     template: '%s | Analyzr',
-    default: 'Websites | Analyzr',
+    default: ' Analyzr',
   },
 };
