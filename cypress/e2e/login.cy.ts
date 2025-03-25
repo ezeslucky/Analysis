@@ -27,7 +27,7 @@ describe('Login tests', () => {
 
     cy.getDataTest('input-username').find('input').as('inputUsername');
     cy.get('@inputUsername').click();
-    cy.get('@inputUsername').type(Cypress.env('umami_user'), { delay: 0 });
+    cy.get('@inputUsername').type(Cypress.env('analyzr_user'), { delay: 0 });
     cy.get('@inputUsername').click();
     cy.getDataTest('input-password').find('input').type('wrongpassword', { delay: 0 });
     cy.getDataTest('button-submit').click();

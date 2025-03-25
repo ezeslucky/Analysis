@@ -6,7 +6,7 @@ export default defineConfig({
   },
   // default username / password on init
   env: {
-    umami_user: 'admin',
-    umami_password: 'umami',
+    analyzr_user: 'ezeslucky',
+    analyzr_password: 'ezeslucky',
   },
 });

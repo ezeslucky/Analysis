@@ -1,13 +1,13 @@
 {
-  "name": "umami",
+  "name": "analyzr",
   "version": "2.17.0",
   "description": "A simple, fast, privacy-focused alternative to Google Analytics.",
-  "author": "Umami Software, Inc. <hello@umami.is>",
+  "author": "Ezeslucky",
   "license": "MIT",
-  "homepage": "https://umami.is",
+  "homepage": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/umami-software/umami.git"
+    "url": "https://github.com/ezeslycky/Analyzr.git"
   },
   "scripts": {
     "dev": "next dev -p 3000 --turbo",
