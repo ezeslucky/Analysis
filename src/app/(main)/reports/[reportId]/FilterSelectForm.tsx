@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useState } from 'react';
 import FieldSelectForm from './FieldSelectForm';
 import FieldFilterEditForm from './FieldFilterEditForm';

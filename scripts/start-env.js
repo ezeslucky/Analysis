@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 require('dotenv').config();
 const cli = require('next/dist/cli/next-start');
 

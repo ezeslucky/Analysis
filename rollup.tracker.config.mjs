@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import 'dotenv/config';
 import replace from '@rollup/plugin-replace';
 import { terser } from 'rollup-plugin-terser';

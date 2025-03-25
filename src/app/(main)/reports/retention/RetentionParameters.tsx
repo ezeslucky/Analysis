@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useContext } from 'react';
 import { useMessages } from '@/components/hooks';
 import { Form, FormButtons, FormRow, SubmitButton } from 'react-basics';

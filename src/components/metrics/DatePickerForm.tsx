@@ -4,6 +4,7 @@ import { isAfter, isBefore, isSameDay, startOfDay, endOfDay } from 'date-fns';
 import { useLocale } from '@/components/hooks';
 import { FILTER_DAY, FILTER_RANGE } from '@/lib/constants';
 import { useMessages } from '@/components/hooks';
+import styles from './DatePickerForm.module.css';
 
 export function DatePickerForm({
   startDate: defaultStartDate,
@@ -36,14 +37,14 @@ export function DatePickerForm({
   };
 
   return (
-    <div className="flex flex-col max-w-full">
-      <div className="flex justify-center items-center mb-5">
+    <div className={styles.container}>
+      <div className={styles.filter}>
         <ButtonGroup selectedKey={selected} onSelect={key => setSelected(key as any)}>
           <Button key={FILTER_DAY}>{formatMessage(labels.singleDay)}</Button>
           <Button key={FILTER_RANGE}>{formatMessage(labels.dateRange)}</Button>
         </ButtonGroup>
       </div>
-      <div className="flex justify-center flex-wrap">
+      <div className={styles.calendars}>
         {selected === FILTER_DAY && (
           <Calendar
             date={singleDate}
@@ -55,26 +56,24 @@ export function DatePickerForm({
         )}
         {selected === FILTER_RANGE && (
           <>
-            <div className="flex gap-5 border-l border-gray-300 pl-5">
-              <Calendar
-                date={startDate}
-                minDate={minDate}
-                maxDate={endDate}
-                locale={dateLocale}
-                onChange={setStartDate}
-              />
-              <Calendar
-                date={endDate}
-                minDate={startDate}
-                maxDate={maxDate}
-                locale={dateLocale}
-                onChange={setEndDate}
-              />
-            </div>
+            <Calendar
+              date={startDate}
+              minDate={minDate}
+              maxDate={endDate}
+              locale={dateLocale}
+              onChange={setStartDate}
+            />
+            <Calendar
+              date={endDate}
+              minDate={startDate}
+              maxDate={maxDate}
+              locale={dateLocale}
+              onChange={setEndDate}
+            />
           </>
         )}
       </div>
-      <div className="flex justify-center items-center gap-3 mt-5">
+      <div className={styles.buttons}>
         <Button variant="primary" onClick={handleSave} disabled={disabled}>
           {formatMessage(labels.save)}
         </Button>

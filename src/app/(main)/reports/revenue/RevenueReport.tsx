@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import Money from '@/assets/money.svg';
 import { REPORT_TYPES } from '@/lib/constants';
 import Report from '../[reportId]/Report';

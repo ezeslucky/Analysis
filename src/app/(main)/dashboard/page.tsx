@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import DashboardPage from './DashboardPage';
 import { Metadata } from 'next';
 

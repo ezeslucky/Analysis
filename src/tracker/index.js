@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 (window => {
   const {
     screen: { width, height },
@@ -32,8 +31,8 @@
     hostUrl || '__COLLECT_API_HOST__' || currentScript.src.split('/').slice(0, -1).join('/');
   const endpoint = `${host.replace(/\/$/, '')}__COLLECT_API_ENDPOINT__`;
   const screen = `${width}x${height}`;
-  const eventRegex = /data-analyzr-event-([\w-_]+)/;
-  const eventNameAttribute = _data + 'analyzr-event';
+  const eventRegex = /data-umami-event-([\w-_]+)/;
+  const eventNameAttribute = _data + 'umami-event';
   const delayDuration = 300;
 
   /* Helper functions */

@@ -12,7 +12,7 @@ import { startOfMonth, endOfMonth } from 'date-fns';
 import Icons from '@/components/icons';
 import { useLocale } from '@/components/hooks';
 import { formatDate } from '@/lib/date';
-import classNames from 'classnames';
+import styles from './MonthSelect.module.css';
 
 export function MonthSelect({ date = new Date(), onChange }) {
   const { locale, dateLocale } = useLocale();
@@ -26,38 +26,40 @@ export function MonthSelect({ date = new Date(), onChange }) {
   };
 
   return (
-    <div ref={ref} className="flex items-center justify-center border border-gray-400 rounded-md">
-      <PopupTrigger>
-        <Button className="flex items-center gap-2 cursor-pointer" variant="quiet">
-          <Text>{month}</Text>
-          <Icon size="sm">
-            <Icons.ChevronDown />
-          </Icon>
-        </Button>
-        <Popup className="border border-gray-400 bg-gray-100 rounded-md p-5 mt-1" alignment="start">
-          {close => (
-            <CalendarMonthSelect
-              date={date}
-              locale={dateLocale}
-              onSelect={handleChange.bind(null, close)}
-            />
-          )}
-        </Popup>
-      </PopupTrigger>
-      <PopupTrigger>
-        <Button className="flex items-center gap-2 cursor-pointer" variant="quiet">
-          <Text>{year}</Text>
-          <Icon size="sm">
-            <Icons.ChevronDown />
-          </Icon>
-        </Button>
-        <Popup className="border border-gray-400 bg-gray-100 rounded-md p-5 mt-1" alignment="start">
-          {close => (
-            <CalendarYearSelect date={date} onSelect={handleChange.bind(null, close)} />
-          )}
-        </Popup>
-      </PopupTrigger>
-    </div>
+    <>
+      <div ref={ref} className={styles.container}>
+        <PopupTrigger>
+          <Button className={styles.input} variant="quiet">
+            <Text>{month}</Text>
+            <Icon size="sm">
+              <Icons.ChevronDown />
+            </Icon>
+          </Button>
+          <Popup className={styles.popup} alignment="start">
+            {close => (
+              <CalendarMonthSelect
+                date={date}
+                locale={dateLocale}
+                onSelect={handleChange.bind(null, close)}
+              />
+            )}
+          </Popup>
+        </PopupTrigger>
+        <PopupTrigger>
+          <Button className={styles.input} variant="quiet">
+            <Text>{year}</Text>
+            <Icon size="sm">
+              <Icons.ChevronDown />
+            </Icon>
+          </Button>
+          <Popup className={styles.popup} alignment="start">
+            {(close: any) => (
+              <CalendarYearSelect date={date} onSelect={handleChange.bind(null, close)} />
+            )}
+          </Popup>
+        </PopupTrigger>
+      </div>
+    </>
   );
 }
 

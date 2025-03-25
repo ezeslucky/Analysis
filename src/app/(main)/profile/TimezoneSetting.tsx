@@ -1,8 +1,8 @@
-/* eslint-disable prettier/prettier */
 import { useState } from 'react';
 import { Dropdown, Item, Button, Flexbox } from 'react-basics';
 import { useTimezone, useMessages } from '@/components/hooks';
 import { getTimezone } from '@/lib/date';
+import styles from './TimezoneSetting.module.css';
 
 const timezones = Intl.supportedValuesOf('timeZone');
 
@@ -19,11 +19,11 @@ export function TimezoneSetting() {
   return (
     <Flexbox gap={10}>
       <Dropdown
-        className="w-[200px]"
+        className={styles.dropdown}
         items={options}
         value={timezone}
         onChange={(value: any) => saveTimezone(value)}
-        menuProps={{ className:"max-h-[300px] w-[300px]" }}
+        menuProps={{ className: styles.menu }}
         allowSearch={true}
         onSearch={setSearch}
       >

@@ -1,10 +1,10 @@
-/* eslint-disable prettier/prettier */
 import { useContext } from 'react';
 import classNames from 'classnames';
 import { ReportContext } from '../[reportId]/Report';
 import EmptyPlaceholder from '@/components/common/EmptyPlaceholder';
 import { useMessages, useLocale } from '@/components/hooks';
 import { formatDate } from '@/lib/date';
+import styles from './RetentionTable.module.css';
 
 const DAYS = [1, 2, 3, 4, 5, 6, 7, 14, 21, 28];
 
@@ -39,21 +39,21 @@ export function RetentionTable({ days = DAYS }) {
 
   return (
     <>
-      <div className="flex flex-col">
-        <div className="flex flex-row gap-[1px] mb-[1px] font-bold">
-          <div className="flex items-center min-w-[160px]">{formatMessage(labels.date)}</div>
-          <div className="flex items-center min-w-[80px]">{formatMessage(labels.visitors)}</div>
+      <div className={styles.table}>
+        <div className={classNames(styles.row, styles.header)}>
+          <div className={styles.date}>{formatMessage(labels.date)}</div>
+          <div className={styles.visitors}>{formatMessage(labels.visitors)}</div>
           {days.map(n => (
-            <div key={n} className="flex items-center justify-center w-[60px] h-[60px] text-center text-[var(--font-size-sm)] font-normal">
+            <div key={n} className={styles.day}>
               {formatMessage(labels.day)} {n}
             </div>
           ))}
         </div>
         {rows.map(({ date, visitors, records }, rowIndex) => {
           return (
-            <div key={rowIndex} className="flex flex-row gap-[1px] mb-[1px]">
-              <div className="flex items-center min-w-[160px]">{formatDate(date, 'PP', locale)}</div>
-              <div className="flex items-center min-w-[80px]">{visitors}</div>
+            <div key={rowIndex} className={styles.row}>
+              <div className={styles.date}>{formatDate(date, 'PP', locale)}</div>
+              <div className={styles.visitors}>{visitors}</div>
               {days.map(day => {
                 if (totalDays - rowIndex < day) {
                   return null;
@@ -62,9 +62,7 @@ export function RetentionTable({ days = DAYS }) {
                 return (
                   <div
                     key={day}
-                    className={classNames("flex items-center justify-center w-[60px] h-[60px] bg-blue200 rounded-[var(--border-radius)]", {
-                      "bg-blue100": !percentage,
-                    })}
+                    className={classNames(styles.cell, { [styles.empty]: !percentage })}
                   >
                     {percentage ? `${Number(percentage).toFixed(2)}%` : ''}
                   </div>

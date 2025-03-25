@@ -3,8 +3,8 @@ name: Create docker images
 on:
   push:
     branches:
-      - main
-      
+      - analytics
+      - cloud
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v6
         name: Build & push Docker image to docker.io
         with:
-          image: ezeslucky441/analyzr
+          image: umamisoftware/umami
           tags: cloud-${{ steps.random_hash.outputs.hash }}, cloud-latest
           buildArgs: DATABASE_TYPE=postgresql
           registry: docker.io

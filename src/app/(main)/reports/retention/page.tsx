@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Metadata } from 'next';
 import RetentionReportPage from './RetentionReportPage';
 

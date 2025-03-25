@@ -1,12 +1,11 @@
-version: "3.8"
-
+---
 services:
-  analyzr:
-    image: ezeslucky441/analyzr:v1.0
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: postgresql://analyzr:analyzr@db:5432/analyzr
+      DATABASE_URL: postgresql://umami:umami@db:5432/umami
       DATABASE_TYPE: postgresql
       APP_SECRET: replace-me-with-a-random-string
     depends_on:
@@ -15,25 +14,23 @@ services:
     init: true
     restart: always
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/heartbeat"]
-      interval: 10s   # Increased interval to avoid frequent checks
+      test: ["CMD-SHELL", "curl http://localhost:3000/api/heartbeat"]
+      interval: 5s
       timeout: 5s
       retries: 5
-
   db:
-    image: postgres:latest
+    image: postgres:15-alpine
     environment:
-      POSTGRES_DB: analyzr
-      POSTGRES_USER: analyzr
-      POSTGRES_PASSWORD: analyzr
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: umami
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - umami-db-data:/var/lib/postgresql/data
     restart: always
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "analyzr", "-d", "analyzr"]
-      interval: 10s  # Increased interval for better resource management
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
       timeout: 5s
       retries: 5
-
 volumes:
-  postgres_data:
+  umami-db-data:

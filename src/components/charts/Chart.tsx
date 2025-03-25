@@ -5,6 +5,7 @@ import ChartJS, { LegendItem, ChartOptions } from 'chart.js/auto';
 import HoverTooltip from '@/components/common/HoverTooltip';
 import Legend from '@/components/metrics/Legend';
 import { DEFAULT_ANIMATION_DURATION } from '@/lib/constants';
+import styles from './Chart.module.css';
 
 export interface ChartProps {
   type?: 'bar' | 'bubble' | 'doughnut' | 'pie' | 'line' | 'polarArea' | 'radar' | 'scatter';
@@ -96,8 +97,11 @@ export function Chart({
 
     chart.current.options = options;
 
+    // Allow config changes before update
     onUpdate?.(chart.current);
+
     chart.current.update(updateMode);
+
     setLegendItems(chart.current.legend.legendItems);
   };
 
@@ -128,20 +132,20 @@ export function Chart({
     }
 
     chart.current.update(updateMode);
+
     setLegendItems(chart.current.legend.legendItems);
   };
 
   return (
     <>
-      <div className={classNames('relative h-[400px] overflow-hidden', className)}>
+      <div className={classNames(styles.chart, className)}>
         {isLoading && <Loading position="page" icon="dots" />}
-        
         <canvas ref={canvas} />
       </div>
       <Legend items={legendItems} onClick={handleLegendClick} />
       {tooltip && (
         <HoverTooltip>
-          <div className="flex flex-col gap-2.5">{tooltip}</div>
+          <div className={styles.tooltip}>{tooltip}</div>
         </HoverTooltip>
       )}
     </>

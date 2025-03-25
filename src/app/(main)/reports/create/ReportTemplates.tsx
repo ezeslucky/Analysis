@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import Funnel from '@/assets/funnel.svg';
 import Money from '@/assets/money.svg';
 import Lightbulb from '@/assets/lightbulb.svg';
@@ -10,6 +9,7 @@ import { useMessages, useTeamUrl } from '@/components/hooks';
 import PageHeader from '@/components/layout/PageHeader';
 import Link from 'next/link';
 import { Button, Icon, Icons, Text } from 'react-basics';
+import styles from './ReportTemplates.module.css';
 
 export function ReportTemplates({ showHeader = true }: { showHeader?: boolean }) {
   const { formatMessage, labels } = useMessages();
@@ -63,7 +63,7 @@ export function ReportTemplates({ showHeader = true }: { showHeader?: boolean })
   return (
     <>
       {showHeader && <PageHeader title={formatMessage(labels.reports)} />}
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(360px,1fr))] gap-5">
+      <div className={styles.reports}>
         {reports.map(({ title, description, url, icon }) => {
           return (
             <ReportItem key={title} icon={icon} title={title} description={description} url={url} />
@@ -78,13 +78,13 @@ function ReportItem({ title, description, url, icon }) {
   const { formatMessage, labels } = useMessages();
 
   return (
-    <div className="flex flex-col gap-5 p-5 border border-base500 rounded-lg shadow-sm bg-white">
-      <div className="flex items-center gap-2 text-lg font-bold">
+    <div className={styles.report}>
+      <div className={styles.title}>
         <Icon size="lg">{icon}</Icon>
         <Text>{title}</Text>
       </div>
-      <div className="flex-1 text-base text-gray-700">{description}</div>
-      <div className="flex items-center justify-center">
+      <div className={styles.description}>{description}</div>
+      <div className={styles.buttons}>
         <Link href={url}>
           <Button variant="primary">
             <Icon>

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Prisma, Website } from '@prisma/client';
 import redis from '@/lib/redis';
 import prisma from '@/lib/prisma';

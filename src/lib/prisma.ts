@@ -8,7 +8,7 @@ import { maxDate } from './date';
 import { QueryFilters, QueryOptions, PageParams } from './types';
 import { filtersToArray } from './params';
 
-const log = debug('analyzr:prisma');
+const log = debug('umami:prisma');
 
 const MYSQL_DATE_FORMATS = {
   minute: '%Y-%m-%dT%H:%i:00',

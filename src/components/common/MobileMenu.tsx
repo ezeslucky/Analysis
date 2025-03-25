@@ -2,6 +2,7 @@ import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import styles from './MobileMenu.module.css';
 
 export function MobileMenu({
   items = [],
@@ -14,7 +15,7 @@ export function MobileMenu({
   const pathname = usePathname();
 
   const Items = ({ items, className }: { items: any[]; className?: string }): any => (
-    <div className={classNames('flex flex-col', className)}>
+    <div className={classNames(styles.items, className)}>
       {items.map(({ label, url, children }: { label: string; url: string; children: any[] }) => {
         const selected = pathname.startsWith(url);
 
@@ -23,15 +24,12 @@ export function MobileMenu({
             <Link
               key={url}
               href={url}
-              className={classNames(
-                'text-lg font-bold leading-[80px] px-10 text-gray-600',
-                { 'text-gray-900': selected }
-              )}
+              className={classNames(styles.item, { [styles.selected]: selected })}
               onClick={onClose}
             >
               {label}
             </Link>
-            {children && <Items items={children} className="ml-10 text-gray-600" />}
+            {children && <Items items={children} className={styles.submenu} />}
           </>
         );
       })}
@@ -39,10 +37,10 @@ export function MobileMenu({
   );
 
   return createPortal(
-    <div className="fixed top-[60px] left-0 right-0 bottom-0 flex flex-col bg-gray-50 z-[9999] overflow-auto">
+    <div className={classNames(styles.menu)}>
       <Items items={items} />
     </div>,
-    document.body
+    document.body,
   );
 }
 

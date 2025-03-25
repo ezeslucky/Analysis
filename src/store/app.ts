@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { create } from 'zustand';
 import {
   DATE_RANGE_CONFIG,

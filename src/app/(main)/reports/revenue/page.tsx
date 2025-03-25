@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import RevenueReportPage from './RevenueReportPage';
 import { Metadata } from 'next';
 

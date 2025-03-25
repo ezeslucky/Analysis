@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
 export const CURRENT_VERSION = process.env.currentVersion;
-export const AUTH_TOKEN = 'analyzr.auth';
-export const LOCALE_CONFIG = 'analyzr.locale';
-export const TIMEZONE_CONFIG = 'analyzr.timezone';
-export const DATE_RANGE_CONFIG = 'analyzr.date-range';
-export const THEME_CONFIG = 'analyzr.theme';
-export const DASHBOARD_CONFIG = 'analyzr.dashboard';
-export const VERSION_CHECK = 'analyzr.version-check';
-export const SHARE_TOKEN_HEADER = 'x-analyzr-share-token';
-export const HOMEPAGE_URL = '/';
-export const REPO_URL = 'https://github.com/ezeslucky/Analyzr.git';
-export const UPDATES_URL = 'https://api.analyzr.is/v1/updates';
-export const TELEMETRY_PIXEL = 'https://i.analyzr.is/a.png';
+export const AUTH_TOKEN = 'umami.auth';
+export const LOCALE_CONFIG = 'umami.locale';
+export const TIMEZONE_CONFIG = 'umami.timezone';
+export const DATE_RANGE_CONFIG = 'umami.date-range';
+export const THEME_CONFIG = 'umami.theme';
+export const DASHBOARD_CONFIG = 'umami.dashboard';
+export const VERSION_CHECK = 'umami.version-check';
+export const SHARE_TOKEN_HEADER = 'x-umami-share-token';
+export const HOMEPAGE_URL = 'https://umami.is';
+export const REPO_URL = 'https://github.com/umami-software/umami';
+export const UPDATES_URL = 'https://api.umami.is/v1/updates';
+export const TELEMETRY_PIXEL = 'https://i.umami.is/a.png';
 
 export const DEFAULT_LOCALE = process.env.defaultLocale || 'en-US';
 export const DEFAULT_THEME = 'light';

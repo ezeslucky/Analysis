@@ -4,19 +4,20 @@ import LanguageButton from '@/components/input/LanguageButton';
 import ThemeButton from '@/components/input/ThemeButton';
 import SettingsButton from '@/components/input/SettingsButton';
 import Icons from '@/components/icons';
+import styles from './Header.module.css';
 
 export function Header() {
   return (
-    <header className="flex flex-row items-center justify-between w-full h-[100px]">
+    <header className={styles.header}>
       <div>
-        <Link href="/" target="_blank" className="flex flex-row items-center gap-2.5 text-lg font-bold text-font-color100 !important">
+        <Link href="https://umami.is" target="_blank" className={styles.title}>
           <Icon size="lg">
             <Icons.Logo />
           </Icon>
-          <Text>AnalyZr</Text> 
+          <Text>umami</Text>
         </Link>
       </div>
-      <div className="flex flex-row items-center justify-end md:flex-1">
+      <div className={styles.buttons}>
         <ThemeButton />
         <LanguageButton />
         <SettingsButton />

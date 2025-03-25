@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { z } from 'zod';
 import { parseRequest } from '@/lib/request';
 import { json, unauthorized } from '@/lib/response';

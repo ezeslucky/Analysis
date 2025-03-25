@@ -1664,7 +1664,7 @@
   "message.new-version-available": [
     {
       "type": 0,
-      "value": "En ny version av analyzr "
+      "value": "En ny version av Umami "
     },
     {
       "type": 1,

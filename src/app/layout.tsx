@@ -32,7 +32,7 @@ export default function ({ children }) {
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Analyzr',
-    default: 'Analyzr',
+    template: '%s | Umami',
+    default: 'Umami',
   },
 };

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useState, useMemo, useEffect } from 'react';
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import classNames from 'classnames';
@@ -6,7 +5,7 @@ import { Button, Loading, Toggle, SearchField } from 'react-basics';
 import { firstBy } from 'thenby';
 import useDashboard, { saveDashboard } from '@/store/dashboard';
 import { useMessages, useWebsites } from '@/components/hooks';
-
+import styles from './DashboardEdit.module.css';
 
 const DRAG_ID = 'dashboard-website-ordering';
 
@@ -19,7 +18,7 @@ export function DashboardEdit({ teamId }: { teamId: string }) {
   const [edited, setEdited] = useState(isEdited);
   const [websites, setWebsites] = useState([]);
   const [search, setSearch] = useState('');
- 
+
   const {
     result,
     query: { isLoading },
@@ -93,9 +92,9 @@ export function DashboardEdit({ teamId }: { teamId: string }) {
 
   return (
     <>
-      <div className="flex items-center justify-between mb-5 gap-5">
-        <SearchField className="max-w-[360px]" value={search} onSearch={setSearch} />
-        <div className="flex items-center justify-end gap-2.5">
+      <div className={styles.header}>
+        <SearchField className={styles.search} value={search} onSearch={setSearch} />
+        <div className={styles.buttons}>
           <Button onClick={handleSave} variant="primary" size="sm">
             {formatMessage(labels.save)}
           </Button>
@@ -107,7 +106,7 @@ export function DashboardEdit({ teamId }: { teamId: string }) {
           </Button>
         </div>
       </div>
-      <div className="cursor-grab active:cursor-grabbing">
+      <div className={styles.dragActive}>
         <DragDropContext onDragEnd={handleWebsiteDrag}>
           <Droppable droppableId={DRAG_ID}>
             {(provided, snapshot) => (
@@ -129,15 +128,15 @@ export function DashboardEdit({ teamId }: { teamId: string }) {
                       {(provided, snapshot) => (
                         <div
                           ref={provided.innerRef}
-                          className={classNames("flex items-center justify-between w-full p-5 rounded border border-[--base400] bg-[--base50] mb-2.5 ", {
-                            "border-[var(--base600)] shadow-[4px_4px_4px_var(--base100)]": snapshot.isDragging,
+                          className={classNames(styles.item, {
+                            [styles.active]: snapshot.isDragging,
                           })}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                         >
-                          <div className=" relative">
-                            <div className="font-semibold text-base">{name}</div>
-                            <div className="text-[14px] text-base-700">{domain}</div>
+                          <div className={styles.text}>
+                            <div className={styles.name}>{name}</div>
+                            <div className={styles.domain}>{domain}</div>
                           </div>
                           <Toggle
                             checked={active.includes(id)}

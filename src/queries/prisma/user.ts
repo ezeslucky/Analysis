@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Prisma } from '@prisma/client';
 import { ROLES } from '@/lib/constants';
 import prisma from '@/lib/prisma';

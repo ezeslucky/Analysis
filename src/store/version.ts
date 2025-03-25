@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { create } from 'zustand';
 import { produce } from 'immer';
 import semver from 'semver';

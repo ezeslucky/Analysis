@@ -1,10 +1,9 @@
-/* eslint-disable prettier/prettier */
 import { useState } from 'react';
 import { Button, Dropdown, Item, Flexbox } from 'react-basics';
 import { useLocale, useMessages } from '@/components/hooks';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import { languages } from '@/lib/lang';
-
+import styles from './LanguageSetting.module.css';
 
 export function LanguageSetting() {
   const [search, setSearch] = useState('');
@@ -32,7 +31,7 @@ export function LanguageSetting() {
         onChange={val => saveLocale(val as string)}
         allowSearch={true}
         onSearch={setSearch}
-        menuProps={{className: "max-h-[300px] w-[300px]"}}
+        menuProps={{ className: styles.menu }}
       >
         {item => <Item key={item}>{languages[item].label}</Item>}
       </Dropdown>

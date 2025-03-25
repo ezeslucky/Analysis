@@ -1,8 +1,8 @@
-/* eslint-disable prettier/prettier */
 import { useContext } from 'react';
 import { Icon, LoadingButton, InlineEditField, useToasts } from 'react-basics';
 import { useMessages, useApi, useNavigation, useTeamUrl } from '@/components/hooks';
 import { ReportContext } from './Report';
+import styles from './ReportHeader.module.css';
 import { REPORT_TYPES } from '@/lib/constants';
 import Breadcrumb from '@/components/common/Breadcrumb';
 
@@ -55,9 +55,9 @@ export function ReportHeader({ icon }) {
   }
 
   return (
-    <div className="grid grid-cols-[1fr_min-content] items-center row-start-1 row-end-2 col-start-1 col-end-3 my-5">
+    <div className={styles.header}>
       <div>
-        <div className="text-[11px] font-bold uppercase text-base600">
+        <div className={styles.type}>
           <Breadcrumb
             data={[
               { label: formatMessage(labels.reports), url: renderTeamUrl('/reports') },
@@ -69,7 +69,7 @@ export function ReportHeader({ icon }) {
             ]}
           />
         </div>
-        <div className="flex flex-row items-center text-2xl font-bold gap-5 h-15">
+        <div className={styles.title}>
           <Icon size="lg">{icon}</Icon>
           <InlineEditField
             key={name}
@@ -79,7 +79,7 @@ export function ReportHeader({ icon }) {
             onCommit={handleNameChange}
           />
         </div>
-        <div className="text-[var(--font-color300)] max-w-[500px] h-[30px]">
+        <div className={styles.description}>
           <InlineEditField
             key={description}
             name="description"
@@ -89,7 +89,7 @@ export function ReportHeader({ icon }) {
           />
         </div>
       </div>
-      <div className="items-center  flex">
+      <div className={styles.actions}>
         <LoadingButton
           variant="primary"
           isLoading={isCreating || isUpdating}

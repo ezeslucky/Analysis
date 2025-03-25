@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { StatusLight } from 'react-basics';
 import { useApi } from '@/components/hooks';
 import { useMessages } from '@/components/hooks';
+import styles from './ActiveUsers.module.css';
 
 export function ActiveUsers({
   websiteId,
@@ -34,10 +35,8 @@ export function ActiveUsers({
   }
 
   return (
-    <StatusLight className="flex items-center ml-5" variant="success">
-      <div className="flex whitespace-nowrap text-base font-normal">
-        {formatMessage(messages.activeUsers, { x: count })}
-      </div>
+    <StatusLight className={styles.container} variant="success">
+      <div className={styles.text}>{formatMessage(messages.activeUsers, { x: count })}</div>
     </StatusLight>
   );
 }

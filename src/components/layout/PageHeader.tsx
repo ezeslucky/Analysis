@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import { Icon } from 'react-basics';
+import styles from './PageHeader.module.css';
 
 export function PageHeader({
   title,
@@ -17,22 +18,16 @@ export function PageHeader({
 }) {
   return (
     <>
-      {breadcrumb && <div className="pt-5">{breadcrumb}</div>}
-      <div
-        className={classNames(
-          'flex flex-wrap items-center justify-between h-[100px] w-full mb-2 md:mb-0',
-          className
-        )}
-      >
+      <div className={styles.breadcrumb}>{breadcrumb}</div>
+      <div className={classNames(styles.header, className)}>
         {icon && (
-          <Icon size="lg" className="text-gray-700 mr-4">
+          <Icon size="lg" className={styles.icon}>
             {icon}
           </Icon>
         )}
 
-        {title && <div className="flex items-center text-2xl font-bold gap-5 h-[60px] flex-1">{title}</div>}
-        
-        <div className="flex justify-end">{children}</div>
+        {title && <div className={styles.title}>{title}</div>}
+        <div className={styles.actions}>{children}</div>
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import { emptyFilter, paramFilter } from '@/lib/filters';
 import { FILTER_RAW, FILTER_COMBINED } from '@/lib/constants';
 import MetricsTable, { MetricsTableProps } from './MetricsTable';
 import { useMessages } from '@/components/hooks';
-import classNames from 'classnames';
+import styles from './QueryParametersTable.module.css';
 
 const filters = {
   [FILTER_RAW]: emptyFilter,
@@ -37,9 +37,9 @@ export function QueryParametersTable({
         filter === FILTER_RAW ? (
           x
         ) : (
-          <div className="inline-flex items-center leading-[26px]">
-            <div className="px-2 text-primary-400 bg-blue-100 rounded">{p}</div>
-            <div className="px-2">{v}</div>
+          <div className={styles.item}>
+            <div className={styles.param}>{p}</div>
+            <div className={styles.value}>{v}</div>
           </div>
         )
       }

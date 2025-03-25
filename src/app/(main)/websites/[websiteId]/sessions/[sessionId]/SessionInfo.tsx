@@ -2,6 +2,7 @@ import { useFormat, useLocale, useMessages, useRegionNames, useTimezone } from '
 import TypeIcon from '@/components/common/TypeIcon';
 import { Icon, CopyIcon } from 'react-basics';
 import Icons from '@/components/icons';
+import styles from './SessionInfo.module.css';
 
 export default function SessionInfo({ data }) {
   const { locale } = useLocale();
@@ -11,59 +12,55 @@ export default function SessionInfo({ data }) {
   const { getRegionName } = useRegionNames(locale);
 
   return (
-    <div className="grid gap-2.5">
-      <dl className="w-full">
-        <dt className="text-font-color200 font-bold">ID</dt>
-        <dd className="flex gap-2.5 items-center my-[5px] mb-7 text-left">
+    <div className={styles.info}>
+      <dl>
+        <dt>ID</dt>
+        <dd>
           {data?.id} <CopyIcon value={data?.id} />
         </dd>
 
-        <dt className="text-font-color200 font-bold">{formatMessage(labels.lastSeen)}</dt>
-        <dd className="flex gap-2.5 items-center my-[5px] mb-7 text-left">
-          {formatTimezoneDate(data?.lastAt, 'PPPPpp')}
-        </dd>
+        <dt>{formatMessage(labels.lastSeen)}</dt>
+        <dd>{formatTimezoneDate(data?.lastAt, 'PPPPpp')}</dd>
 
-        <dt className="text-font-color200 font-bold">{formatMessage(labels.firstSeen)}</dt>
-        <dd className="flex gap-2.5 items-center my-[5px] mb-7 text-left">
-          {formatTimezoneDate(data?.firstAt, 'PPPPpp')}
-        </dd>
+        <dt>{formatMessage(labels.firstSeen)}</dt>
+        <dd>{formatTimezoneDate(data?.firstAt, 'PPPPpp')}</dd>
 
-        <dt className="text-font-color200 font-bold">{formatMessage(labels.country)}</dt>
-        <dd className="flex gap-2.5 items-center my-[5px] mb-7 text-left">
+        <dt>{formatMessage(labels.country)}</dt>
+        <dd>
           <TypeIcon type="country" value={data?.country} />
           {formatValue(data?.country, 'country')}
         </dd>
 
-        <dt className="text-font-color200 font-bold">{formatMessage(labels.region)}</dt>
-        <dd className="flex gap-2.5 items-center my-[5px] mb-7 text-left">
+        <dt>{formatMessage(labels.region)}</dt>
+        <dd>
           <Icon>
             <Icons.Location />
           </Icon>
           {getRegionName(data?.subdivision1)}
         </dd>
 
-        <dt className="text-font-color200 font-bold">{formatMessage(labels.city)}</dt>
-        <dd className="flex gap-2.5 items-center my-[5px] mb-7 text-left">
+        <dt>{formatMessage(labels.city)}</dt>
+        <dd>
           <Icon>
             <Icons.Location />
           </Icon>
           {data?.city}
         </dd>
 
-        <dt className="text-font-color200 font-bold">{formatMessage(labels.os)}</dt>
-        <dd className="flex gap-2.5 items-center my-[5px] mb-7 text-left">
+        <dt>{formatMessage(labels.os)}</dt>
+        <dd>
           <TypeIcon type="os" value={data?.os?.toLowerCase()?.replaceAll(/\W/g, '-')} />
           {formatValue(data?.os, 'os')}
         </dd>
 
-        <dt className="text-font-color200 font-bold">{formatMessage(labels.device)}</dt>
-        <dd className="flex gap-2.5 items-center my-[5px] mb-7 text-left">
+        <dt>{formatMessage(labels.device)}</dt>
+        <dd>
           <TypeIcon type="device" value={data?.device} />
           {formatValue(data?.device, 'device')}
         </dd>
 
-        <dt className="text-font-color200 font-bold">{formatMessage(labels.browser)}</dt>
-        <dd className="flex gap-2.5 items-center my-[5px] mb-7 text-left">
+        <dt>{formatMessage(labels.browser)}</dt>
+        <dd>
           <TypeIcon type="browser" value={data?.browser} />
           {formatValue(data?.browser, 'browser')}
         </dd>
