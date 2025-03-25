@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import { Metadata } from 'next';
 import UTMReportPage from './UTMReportPage';
 

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import classNames from 'classnames';
 import { colord } from 'colord';
 import BarChart from '@/components/charts/BarChart';

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMessages } from '@/components/hooks';
 import { useState } from 'react';
 import { Button, Dropdown, Flexbox, FormRow, Item, TextField } from 'react-basics';

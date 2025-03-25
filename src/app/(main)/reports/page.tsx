@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import ReportsPage from './ReportsPage';
 import { Metadata } from 'next';
 

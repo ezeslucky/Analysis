@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const fs = require('fs-extra');
 const path = require('path');
 const del = require('del');

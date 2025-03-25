@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useFields, useMessages } from '@/components/hooks';
 import Icons from '@/components/icons';
 import { useContext } from 'react';

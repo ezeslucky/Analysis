@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, ReactNode } from 'react';
 import { Loading } from 'react-basics';
 import classNames from 'classnames';

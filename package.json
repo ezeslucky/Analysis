@@ -7,7 +7,7 @@
   "homepage": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ezeslycky/Analyzr.git"
+    "url": "https://github.com/ezeslucky/Analyzr.git"
   },
   "scripts": {
     "dev": "next dev -p 3000 --turbo",

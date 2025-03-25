@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMessages } from '@/components/hooks';
 import useRevenueValues from '@/components/hooks/queries/useRevenueValues';
 import { useContext } from 'react';

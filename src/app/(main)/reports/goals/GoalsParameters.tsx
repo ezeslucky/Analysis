@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMessages } from '@/components/hooks';
 import Icons from '@/components/icons';
 import { formatNumber } from '@/lib/format';

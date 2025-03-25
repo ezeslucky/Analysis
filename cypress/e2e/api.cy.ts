@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 describe('Website tests', () => {
   Cypress.session.clearAllSavedSessions();
 
