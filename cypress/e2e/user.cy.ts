@@ -2,7 +2,7 @@ describe('Website tests', () => {
   Cypress.session.clearAllSavedSessions();
 
   beforeEach(() => {
-    cy.login(Cypress.env('umami_user'), Cypress.env('umami_password'));
+    cy.login(Cypress.env('analyzr_user'), Cypress.env('analyzr_password'));
     cy.visit('/settings/users');
   });
 
