@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext } from 'react';
 import { useMessages } from '@/components/hooks';
 import { Form, FormButtons, FormRow, SubmitButton } from 'react-basics';

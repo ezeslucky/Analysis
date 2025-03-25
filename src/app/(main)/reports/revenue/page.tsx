@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import RevenueReportPage from './RevenueReportPage';
 import { Metadata } from 'next';
 

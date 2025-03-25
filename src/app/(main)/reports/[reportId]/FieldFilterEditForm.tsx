@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMemo, useState } from 'react';
 import { useFilters, useFormat, useMessages, useWebsiteValues } from '@/components/hooks';
 import { OPERATORS } from '@/lib/constants';

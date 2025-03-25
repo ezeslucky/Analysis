@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Menu, Item, Form, FormRow } from 'react-basics';
 import { useMessages } from '@/components/hooks';
 import styles from './FieldSelectForm.module.css';

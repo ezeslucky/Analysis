@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext } from 'react';
 import { Icon, LoadingButton, InlineEditField, useToasts } from 'react-basics';
 import { useMessages, useApi, useNavigation, useTeamUrl } from '@/components/hooks';

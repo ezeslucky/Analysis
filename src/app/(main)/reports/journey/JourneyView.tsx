@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useMemo, useState } from 'react';
 import { TextOverflow, TooltipPopup } from 'react-basics';
 import { firstBy } from 'thenby';

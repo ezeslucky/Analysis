@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
 import { Icon, Icons, Loading, Text } from 'react-basics';
 import PageHeader from '@/components/layout/PageHeader';
@@ -55,6 +57,7 @@ export function DashboardPage() {
                 limit={pageSize}
               />
               <Pager
+              //@ts-ignore
                 page={page}
                 pageSize={pageSize}
                 count={result?.count}

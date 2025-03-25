@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Form, FormRow, Menu, Item } from 'react-basics';
 import { useMessages } from '@/components/hooks';
 

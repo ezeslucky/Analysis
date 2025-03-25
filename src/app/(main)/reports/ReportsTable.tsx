@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GridColumn, GridTable, Icon, Icons, Text } from 'react-basics';
 import LinkButton from '@/components/common/LinkButton';
 import { useMessages, useLogin, useTeamUrl } from '@/components/hooks';

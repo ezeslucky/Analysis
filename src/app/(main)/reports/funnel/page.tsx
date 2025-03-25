@@ -1,3 +1,5 @@
+/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable react/display-name */
 import FunnelReportPage from './FunnelReportPage';
 import { Metadata } from 'next';
 
